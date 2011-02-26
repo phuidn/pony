@@ -12,7 +12,7 @@ package
 		public static var gameState : int = 0;
 		private static var wavePop : int  = 10,
 						spawns : int = 0;
-		private var spawnTime : int = 70,
+		private var spawnTime : int = 94,
 					elapsedTime : int = 0,
 					path : Array;
 		
