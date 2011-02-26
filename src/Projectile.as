@@ -18,7 +18,7 @@ package
 		protected var time : int = 10; // The time of the affect
 		protected var cost: int = 5; // The power cost of shooting
 			
-		public function Projectile(x : Number, y : Number, vx : Number, vy: Number, type:String) 
+		public function Projectile(x : Number, y : Number, vx : Number, vy: Number, type:String = null) 
 		{
 			switch (type)
 			{
