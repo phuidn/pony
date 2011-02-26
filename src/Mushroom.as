@@ -14,7 +14,7 @@ package
 		
 		private var loadTime : int = 30,
 					eTime : int = 0,
-					target : Point,
+					target : Point = new Point(),
 					enemies : Array = [];
 		public function Mushroom(x: Number, y:Number) 
 		{
@@ -24,18 +24,21 @@ package
 		public override function update() : void
 		{
 			var disTo : Number = 3600;
+			var tempDis : Number;
 			FP.world.getClass(Enemy, enemies);
 			for each (var e : Enemy in enemies)
 			{
-				if ((e.x * e.x + e.y * e.y) < disTo)
+				tempDis = (e.x - x) * (e.x - x) + (e.y - y) * (e.y - y);
+				if (tempDis < disTo)
 				{
-					disTo = e.x * e.x + e.y * e.y;
-					target = new Point(e.x, e.y);
-				}
+					disTo = tempDis;
+					//trace(disTo);
+					target.x = e.x - x; 
+					target.y = e.y - y;
+				}	
 			}
 			if (target && eTime>loadTime)
 			{
-				trace("shooting");
 				target.normalize(1);
 				world.add(new Projectile(x, y, target.x, target.y));
 				eTime = 0;
