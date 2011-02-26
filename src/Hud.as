@@ -12,10 +12,15 @@ package
 	 */
 	public class Hud extends Entity 
 	{
+		private const NOTHING : int = 0;
+		private const PLACING : int = 1;
+		private const DELETING : int = 2;
+		
 		[Embed(source = 'assets/grid.png')] private const GRID: Class;
 		private var sprite : Image = new Image(GRID);
 		
-		private var placing : Boolean = false;
+		private var placing : int = NOTHING;
+		
 		private var toPlace : String;
 		private var buttons : Array = new Array();
 		private var ran : Boolean = true;
@@ -33,40 +38,65 @@ package
 		{
 			if (ran)
 			{
-				var but : Button = new Button(10, OFFSETY + 10, "Random");
-				buttons[0] = but;
-				FP.world.add(but);
+				buttons[0] = new Button(10, OFFSETY + 10, "Random")
+				buttons[1] = new Button(40, OFFSETY + 10, "Delete")
+				FP.world.add(buttons[0]);
+				FP.world.add(buttons[1]);
 				ran = false;
 			}
-			if (!placing)
+			if (Input.mouseReleased)
 			{
-				if (Input.mouseReleased)
+				if (placing == NOTHING)
 				{
 					for each (var button : Button in buttons)
 					{
 						var open : String = button.checkClick(world.mouseX, world.mouseY)
 						
-						if (open)
+						if (open == "Delete")
 						{
-							placing = true;
+							placing = DELETING;
+						}
+						else if (open)
+						{
+							placing = PLACING;
 							toPlace = open;
 							break;
 						}					
 					}
+				
 				}
-			}
-			else
-			{
-				if (Input.mouseReleased)
+				else if (placing == PLACING)
 				{
 					var x:Number = Grid.gridX(world.mouseX);
 					var y:Number = Grid.gridY(world.mouseY);
-
-					placing = false;
-					if (Grid.free(x, y)) {
-						var stu:Structure = new Structure(10 + x * 20, 10 +y * 20); 
-						FP.world.add(stu);
-					Grid.occupy(x, y,stu);
+					placing = NOTHING;
+					
+					if (!(x == -1 || y == -1))
+					{
+						if (Grid.free(x, y)) 
+						{
+							var stu:Structure = new Structure(10 + x * 20, 10 +y * 20); 
+							FP.world.add(stu);
+							Grid.occupy(x, y,stu);
+						}
+					}
+				}
+				else if (placing == DELETING)
+				{
+					x = Grid.gridX(world.mouseX);
+					y = Grid.gridY(world.mouseY);
+					placing = NOTHING;
+					
+					if (!(x == -1 || y == -1))
+					{
+						if (!Grid.free(x, y)) 
+						{
+							if (Grid.at(x, y).GetType() != Structure.PLANT && Grid.at(x, y).GetType() != Structure.SPAWNPOINT)
+							{
+								FP.world.remove(Grid.at(x, y));
+								Grid.occupy(x, y, null);
+							}
+						}
 					}
 				}
 			}

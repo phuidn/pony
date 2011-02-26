@@ -28,6 +28,12 @@ package
 			this.posY = posY;
 			this.buttonType = buttonType;
 			
+			if (buttonType == "Delete")
+			{
+				[Embed(source = 'assets/Delete.png')] var img: Class;
+				sprite = new Image(img);
+			}
+			
 			super(posX, posY, sprite);
 		}
 		

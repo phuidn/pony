@@ -19,7 +19,7 @@ package
 			Grid.newGrid();
 			var plant :Structure = new Plant(30, 30);
 			add(plant);
-			Grid.addPlant(1, 1);
+			Grid.addPlant(2, 2);
 			Grid.occupy(1, 1,plant);
 			Grid.occupy(2, 1,plant);
 			Grid.occupy(1, 2,plant);
