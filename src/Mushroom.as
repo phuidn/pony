@@ -29,14 +29,16 @@ package
 		}
 		public override function update() : void
 		{
-			var disTo : Number = rangeSq;
+			var disTo : Number;
 			var tempDis : Number;
+			disTo = rangeSq;
 			target.x = 0;
 			target.y = 0;
 			FP.world.getClass(Enemy, enemies);
 			for each (var e : Enemy in enemies)
 			{
 				tempDis = (e.x - x) * (e.x - x) + (e.y - y) * (e.y - y);
+				
 				if (tempDis < disTo)
 				{
 					disTo = tempDis;
@@ -47,7 +49,7 @@ package
 			
 			if (target.length && (eTime > loadTime) && (disTo != rangeSq))
 			{
-				trace(target);
+				//trace(target);
 				target.normalize(1);
 				world.add(new Projectile(x, y, target.x, target.y));
 				eTime = 0;
