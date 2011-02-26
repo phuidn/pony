@@ -71,11 +71,14 @@ package
 					var y:Number = Grid.gridY(world.mouseY);
 					placing = NOTHING;
 					
-					if (Grid.free(x, y)) 
+					if (!(x == -1 || y == -1))
 					{
-						var stu:Structure = new Structure(10 + x * 20, 10 +y * 20); 
-						FP.world.add(stu);
-						Grid.occupy(x, y,stu);
+						if (Grid.free(x, y)) 
+						{
+							var stu:Structure = new Structure(10 + x * 20, 10 +y * 20); 
+							FP.world.add(stu);
+							Grid.occupy(x, y,stu);
+						}
 					}
 				}
 				else if (placing == DELETING)
@@ -84,12 +87,15 @@ package
 					var y:Number = Grid.gridY(world.mouseY);
 					placing = NOTHING;
 					
-					if (!Grid.free(x, y)) 
+					if (!(x == -1 || y == -1))
 					{
-						if (Grid.at(x, y).GetType() != Structure.PLANT && Grid.at(x, y).GetType() != Structure.SPAWNPOINT)
+						if (!Grid.free(x, y)) 
 						{
-							FP.world.remove(Grid.at(x, y));
-							Grid.occupy(x, y, null);
+							if (Grid.at(x, y).GetType() != Structure.PLANT && Grid.at(x, y).GetType() != Structure.SPAWNPOINT)
+							{
+								FP.world.remove(Grid.at(x, y));
+								Grid.occupy(x, y, null);
+							}
 						}
 					}
 				}

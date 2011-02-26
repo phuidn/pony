@@ -32,12 +32,22 @@ package
 		
 		public static function gridX(x:Number):Number 
 		{
-			return (int) ((x - OFFSETX) / 20);
+			var ret = (int) ((x - OFFSETX) / 20);
+			if (ret >= 0 && ret < 32)
+			{
+				return ret;
+			}
+			return -1;
 		}
 	
 		public static function gridY(y:Number):Number 
 		{
-			return (int) ((y -OFFSETY )/ 20);
+			var ret = (int) ((y - OFFSETY) / 20);
+			if (ret >= 0 && ret < 32)
+			{
+				return ret;
+			}
+			return -1;
 		}
 		
 		public static function occupy(x:int, y:int, struct:Structure):void
