@@ -61,10 +61,13 @@ package
 				{
 					var x:Number = Grid.gridX(world.mouseX);
 					var y:Number = Grid.gridY(world.mouseY);
-					if (Grid.free(x, y))
-							FP.world.add(new Structure(10 + x * 20, 10 +y * 20));
-					//Grid.occupy(x, y);
+
 					placing = false;
+					if (Grid.free(x, y)) {
+						var stu:Structure = new Structure(10 + x * 20, 10 +y * 20); 
+						FP.world.add(stu);
+					Grid.occupy(x, y,stu);
+					}
 				}
 			}
 		}
