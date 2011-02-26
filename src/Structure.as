@@ -16,7 +16,6 @@ package
 		protected var sprite : Image;
 		
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
-		private var sprite2 : Image = new Image(ENEMY);
 		protected var strucType : int = NOTHING;
 		
 		public function Structure(x:int, y:int, sprite:Image = null)
@@ -24,7 +23,7 @@ package
 			if (sprite)
 				this.sprite = sprite;
 			else 
-				this.sprite = sprite2;
+				this.sprite = new Image(ENEMY);
 			super(x, y, this.sprite);
 		}
 		
