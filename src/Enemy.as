@@ -1,5 +1,6 @@
 package  
 {
+	import flash.geom.Point;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	
@@ -10,13 +11,30 @@ package
 	public class Enemy extends Entity 
 	{
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
-		protected var speed : Number = 6,
+		protected var speed : Number = 1,
 				health : int = 10;
 		private var sprite : Image = new Image(ENEMY);
+		private var path :Array;
 		public function Enemy(x : int, y : int) 
 		{
+	//		Grid.occupy(5, 5, new Structure(5, 5));
 			layer = 1;
 			super(x, y, sprite);		
+			var plant : Point = Grid.getPlant();
+			path = Grid.findPath(new Point(8, 10), new Point(3, 3));
+			if (path.length >2){
+				for (var i:int = path.length - 3 ; i >= 0 ; i-- ) {
+					if ((path[i].x == path[i + 1].x && path[i].x == path[i + 2].x))
+						path.splice(i + 1 , 1);
+					else  if ((path[i].y == path[i + 1].y && path[i].y == path[i + 2].y)) 
+						path.splice(i + 1, 1);
+//					else if (((path[i].x == path[i+1].x) || (path[i+1].x ==path[i+2].x)) &&( (path[i].y == path[i+1].y) || (path[i+1].y ==path[i+2].y))) 
+//						path.splice(i + 1, 1);
+
+				}
+			}
+			for each (var p :Point in path)
+				trace(p);
 		}
 		
 		public override function update() : void
