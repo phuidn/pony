@@ -20,7 +20,7 @@ package
 				grid[i] = new Array();
 				for (var j:int = 0 ; j < 24; j++) {
 					grid[i][j] =null;
-				}						
+				}
 			}
 		}
 		

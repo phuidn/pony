@@ -7,10 +7,12 @@ package
 	 */
 	public class SpawnPoint extends Structure 
 	{
-		private const BUILDING : int = 1;
-		private const SPAWNING : int = 2;
-		private var gameState : int = 2,
-					spawnTime : int = 120,
+		private const BUILDING : int = 0;
+		private const SPAWNING : int = 1;
+		public static var gameState : int = 0;
+		private static var wavePop : int  = 10,
+						spawns : int = 0;
+		private var spawnTime : int = 70,
 					elapsedTime : int = 0,
 					path : Array;
 		
@@ -32,10 +34,11 @@ package
 		{
 			if (gameState == SPAWNING)
 			{
-				if (elapsedTime > spawnTime)
+				if (elapsedTime > spawnTime && spawns < wavePop)
 				{
 					world.add(new Enemy(x, y, path));
 					elapsedTime = 0;
+					spawns++;
 				}
 				elapsedTime++;
 			}

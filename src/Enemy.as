@@ -52,8 +52,8 @@ package
 			{
 				var moveX : Number = path[pathelement + 1].x - path[pathelement].x;
 				var moveY : Number = path[pathelement + 1].y - path[pathelement].y;
-				this.x += moveX;
-				this.y += moveY;
+				this.x += moveX * speed;
+				this.y += moveY * speed;
 				if ((Grid.gridX(this.x) == path[pathelement + 1].x) && (Grid.gridY(y) == path[pathelement + 1].y))
 				{
 					pathelement++;

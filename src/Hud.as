@@ -15,11 +15,14 @@ package
 		private const NOTHING : int = 0;
 		private const PLACING : int = 1;
 		private const DELETING : int = 2;
+		private const BUILDING : int = 0;
+		private const SPAWNING : int = 1;
 		
 		[Embed(source = 'assets/grid.png')] private const GRID: Class;
 		private var sprite : Image = new Image(GRID);
 		
-		private var placing : int = NOTHING;
+		private var placing : int = NOTHING,
+					gameState : int = BUILDING;
 		
 		private var toPlace : String;
 		private var buttons : Array = new Array();
@@ -34,79 +37,100 @@ package
 			super(0, 0, sprite);
 		}
 		
-		override public function update():void 
+		public override function added():void
 		{
-			if (ran)
-			{
-				buttons[0] = new Button(10, OFFSETY + 10, "Random")
-				buttons[1] = new Button(40, OFFSETY + 10, "Delete")
+				buttons[0] = new Button(10, OFFSETY + 10, "Mushroom");
+				buttons[1] = new Button(40, OFFSETY + 10, "Delete");
+				buttons[3] = new Button(70, OFFSETY + 10, "Next");
 				FP.world.add(buttons[0]);
 				FP.world.add(buttons[1]);
-				ran = false;
-			}
-			if (Input.mouseReleased)
-			{
-				if (placing == NOTHING)
-				{
-					for each (var button : Button in buttons)
-					{
-						var open : String = button.checkClick(world.mouseX, world.mouseY)
-						
-						if (open == "Delete")
-						{
-							placing = DELETING;
-						}
-						else if (open)
-						{
-							placing = PLACING;
-							toPlace = open;
-							break;
-						}					
-					}
+				FP.world.add(buttons[3]);
+		}
+		
+		override public function update():void 
+		{
+			if (gameState == BUILDING) {
 				
-				}
-				else if (placing == PLACING)
+				if (Input.mouseReleased)
 				{
-					var x:Number = Grid.gridX(world.mouseX);
-					var y:Number = Grid.gridY(world.mouseY);
-					placing = NOTHING;
-					
-					if (!(x == -1 || y == -1))
+					if (placing == NOTHING)
 					{
-						if (Grid.free(x, y)) 
+						for each (var button : Button in buttons)
 						{
-							var stu:Structure = new Structure(10 + x * 20, 10 +y * 20); 
-							Grid.occupy(x, y,stu);
-							for each (var s : SpawnPoint in Grid.getSpawn)
+							var open : String = button.checkClick(world.mouseX, world.mouseY)
+							switch(open)
 							{
-								var a : Array;
-								trace("here");
-								if (!(a = s.findpath()))
-								{
-									placing = 0;
-									Grid.occupy(x, y,null);
-									return;
+								case "Delete":{
+									placing = DELETING;
+									break;
 								}
-								trace(a.length);
+								case "Mushroom": case "Pipe" : case "Barrel":{
+									placing = PLACING;
+									toPlace = open;
+									break;
+								}
+								case "Next":{
+									gameState = SPAWNING;
+									SpawnPoint.gameState = SPAWNING;
+									break;
+								}
+								default: {	break; }
 							}
-							FP.world.add(stu);
+						}
+					
+					}
+					else if (placing == PLACING)
+					{
+						var x:Number = Grid.gridX(world.mouseX);
+						var y:Number = Grid.gridY(world.mouseY);
+						placing = NOTHING;
+						
+						if (!(x == -1 || y == -1))
+						{
+							if (Grid.free(x, y)) 
+							{
+								var stu:Structure = new Structure(10 + x * 20, 10 + y * 20);
+								switch (toPlace)
+								{
+									case "Mushroom": {
+										stu = new Mushroom(10 + x * 20, 10 + y * 20);
+										break;
+									}
+									case "Pipe": { break;}
+									case "Barrel": { break; }
+									
+								}
+								Grid.occupy(x, y, stu);
+								for each (var s : SpawnPoint in Grid.getSpawn)
+								{
+									var a : Array;
+									if (!(a = s.findpath()))
+									{
+										placing = 0;
+										Grid.occupy(x, y,null);
+										return;
+									}
+								}
+								FP.world.add(stu);
+								trace(stu.x, stu.y);
+							}
 						}
 					}
-				}
-				else if (placing == DELETING)
-				{
-					x = Grid.gridX(world.mouseX);
-					y = Grid.gridY(world.mouseY);
-					placing = NOTHING;
-					
-					if (!(x == -1 || y == -1))
+					else if (placing == DELETING)
 					{
-						if (!Grid.free(x, y)) 
+						x = Grid.gridX(world.mouseX);
+						y = Grid.gridY(world.mouseY);
+						placing = NOTHING;
+						
+						if (!(x == -1 || y == -1))
 						{
-							if (Grid.at(x, y).GetType() != Structure.PLANT && Grid.at(x, y).GetType() != Structure.SPAWNPOINT)
+							if (!Grid.free(x, y)) 
 							{
-								FP.world.remove(Grid.at(x, y));
-								Grid.occupy(x, y, null);
+								if (Grid.at(x, y).GetType() != Structure.PLANT && Grid.at(x, y).GetType() != Structure.SPAWNPOINT)
+								{
+									FP.world.remove(Grid.at(x, y));
+									Grid.occupy(x, y, null);
+								}
 							}
 						}
 					}

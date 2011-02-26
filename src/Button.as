@@ -18,6 +18,8 @@ package
 		
 		
 		[Embed(source = 'assets/enemy.png')] private const BUTTON: Class;
+		[Embed(source = 'assets/Delete.png')] private const img: Class;
+		[Embed(source = 'assets/next.png')] private const NEXT: Class;
 		private var sprite : Image = new Image(BUTTON);
 		
 		public function Button(posX : int, posY : int, buttonType : String, height : int = 32, width : int = 32) 
@@ -28,10 +30,24 @@ package
 			this.posY = posY;
 			this.buttonType = buttonType;
 			
-			if (buttonType == "Delete")
+			switch(buttonType)
 			{
-				[Embed(source = 'assets/Delete.png')] var img: Class;
-				sprite = new Image(img);
+				case "Delete":{
+					sprite = new Image(img);
+					break;
+				}
+				case "Place":{
+					sprite = new Image(BUTTON);
+					break;
+				}
+				case "Next":{
+					sprite = new Image(NEXT);
+					break;
+				}
+				default: {
+					sprite = new Image(BUTTON);
+					break;
+				}
 			}
 			
 			super(posX, posY, sprite);

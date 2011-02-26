@@ -32,6 +32,10 @@ package
 		{
 			return strucType;
 		}
+		public override function update() : void
+		{
+		
+		}
 		
 	}
 
