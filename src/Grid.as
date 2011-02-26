@@ -24,6 +24,11 @@ package
 		{
 			return !grid[x][y];
 		}
+				
+		public static function at(x:int, y:int):Structure 
+		{
+			return grid[x][y];
+		}
 		
 		public static function gridX(x:Number):Number 
 		{

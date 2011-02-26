@@ -11,11 +11,12 @@ package
 	
 	public class Plant extends Structure 
 	{
-		[Embed(source = 'assets/planty.png')] private const PLANT: Class;
+		[Embed(source = 'assets/planty.png')] private const PLANT_SPRITE: Class;
 		
 		public function Plant(x:Number, y:Number) 
-		{			
-			sprite = new Image(PLANT);
+		{
+			strucType = PLANT;
+			sprite = new Image(PLANT_SPRITE);
 			layer = 1;
 			super(x, y, sprite);
 		}

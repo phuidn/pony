@@ -13,6 +13,7 @@ package
 		protected var speed : Number = 6,
 				health : int = 10;
 		private var sprite : Image = new Image(ENEMY);
+		
 		public function Enemy(x : int, y : int) 
 		{
 			layer = 1;
