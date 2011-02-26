@@ -2,6 +2,7 @@ package
 {
 	import flash.display.GraphicsGradientFill;
 	import flash.geom.Point;
+	import flash.utils.ByteArray;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.FP;
 	/**
@@ -11,20 +12,22 @@ package
 	public class Mushroom extends Structure 
 	{
 		[Embed(source = 'assets/greenMushroom.png')] private const GREEN_MUSHROOM: Class;
-		protected var damage :int = 1; // The damage the slick causes to enemies walking on it
-		protected var slowing :int = 1; // The number to divide the speed of the unit on walking in the slick
-		protected var cost: int = 10; // The power cost of buying the slick
-		protected var powerUsage : int = 1; // The power usage of the unit
-		protected var mushroomType :String= "Normal";
+		[Embed(source = 'assets/XML/Mushrooms.xml', mimeType = "application/octet-stream")] private const MUSHROOMS: Class;
+		private var damage :int = 1, // The damage the slick causes to enemies walking on it
+					slowing :int = 1, // The number to divide the speed of the unit on walking in the slick
+					cost: int = 10, // The power cost of buying the slick
+					powerUsage : int = 1, // The power usage of the unit
+					mushroomType :String= "Normal",
+					rangeSq : int = 10000;
 		
 		private var loadTime : int = 30,
 					eTime : int = 0,
 					target : Point = new Point(),
-					enemies : Array = [],
-					rangeSq : int = 10000;
+					enemies : Array = [];
 		
 		public function Mushroom(x: Number, y:Number) 
 		{
+			//LoadData(this.mushroomType);
 			sprite = new Image(GREEN_MUSHROOM);
 			super(x, y, sprite);
 		}
@@ -59,9 +62,33 @@ package
 			enemies =  [];
 		}
 		
+		/*
 		public function LoadData(type : String):Boolean 
 		{
-			return true;
+			var rawData : ByteArray = new MUSHROOMS;
+			var dataString = rawData.readUTFBytes(rawData.length);
+			var file : XML = new XML(dataString);
+			var dataList = file.data.mushroom.mushrooms;
+			var dataElement : XML;
+			var found : Boolean = false;
+			
+			for each (dataElement in dataList)
+			{
+				if (String(dataElement.@type) == type)
+				{
+					found = true;
+					damage = int(dataElement.@damage);
+					slowing = int(dataElement.@slowing);
+					cost = int(dataElement.@cost);
+					powerUsage = int(dataElement.@powerUsage);
+					rangeSq = int(dataElement.@rangeSq);
+					trace(damage);
+					break;
+				}
+			}
+			
+			return found;
 		}
+		*/
 	}
 }
