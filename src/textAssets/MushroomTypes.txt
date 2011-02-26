@@ -1,2 +1,0 @@
-%Type, damage , slowing, cost, powerUsage
-"Radiation", "1", "1", "10", "5";
