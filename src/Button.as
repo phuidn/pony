@@ -3,31 +3,39 @@ package
 	import net.flashpunk.Entity;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import net.flashpunk.graphics.Image;
 	/**
 	 * ...
 	 * @author David
 	 */
 	public class Button extends Entity 
 	{
-		private var type : String;
+		private var buttonType : String;
 		private var posX : int,
 		posY : int,
-		height : int,
-		width : int;
+		heightY : int,
+		widthX : int;
 		
-		public function Button(posX : int, posY : int, height : int = 32, width : int = 32) 
+		
+		[Embed(source = 'assets/enemy.png')] private const BUTTON: Class;
+		private var sprite : Image = new Image(BUTTON);
+		
+		public function Button(posX : int, posY : int, buttonType : String, height : int = 32, width : int = 32) 
 		{
-			this.height = height;
-			this.width = width;
+			this.heightY = height;
+			this.widthX = width;
 			this.posX = posX;
 			this.posY = posY;
+			this.buttonType = buttonType;
+			
+			super(posX, posY, sprite);
 		}
 		
 		public function checkClick(pointX : int, pointY : int) : String
 		{
-			if ((pointX >= posX && pointX < posX - width) && (pointY >= posY && pointY < posY = height))
+			if ((pointX >= posX && pointX < posX + widthX) && (pointY >= posY && pointY < posY + heightY))
 			{
-				return type;
+				return buttonType;
 			}
 			else
 			{

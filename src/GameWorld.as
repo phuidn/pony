@@ -8,9 +8,14 @@ package
 	 */
 	public class GameWorld extends World 
 	{
-		private var gird:Array = new Array();
+		private var grid:Array = new Array();
 		
 		public function GameWorld() 
+		{
+
+		}
+		
+		public function init():void
 		{
 			add(new Enemy(320, 240));
 			add(new Plant(0, 416));
@@ -20,6 +25,8 @@ package
 					grid[i][j] = 0;
 				}						
 			}
+			var hud : Hud = new Hud();
+			add(hud);
 		}
 	}
 }
