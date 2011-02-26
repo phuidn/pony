@@ -96,9 +96,11 @@ package
 									}
 									case "Pipe": { break;}
 									case "Barrel": { break; }
+									/*
 									case "Crack": {
 										trap = new Crack(10 + x * 20, 10 + y * 20);
 									}
+									*/
 									
 								}
 								if (stu)
