@@ -76,15 +76,27 @@ package
 						if (Grid.free(x, y)) 
 						{
 							var stu:Structure = new Structure(10 + x * 20, 10 +y * 20); 
-							FP.world.add(stu);
 							Grid.occupy(x, y,stu);
+							for each (var s : SpawnPoint in Grid.getSpawn)
+							{
+								var a : Array;
+								trace("here");
+								if (!(a = s.findpath()))
+								{
+									placing = 0;
+									Grid.occupy(x, y,null);
+									return;
+								}
+								trace(a.length);
+							}
+							FP.world.add(stu);
 						}
 					}
 				}
 				else if (placing == DELETING)
 				{
-					var x:Number = Grid.gridX(world.mouseX);
-					var y:Number = Grid.gridY(world.mouseY);
+					x = Grid.gridX(world.mouseX);
+					y = Grid.gridY(world.mouseY);
 					placing = NOTHING;
 					
 					if (!(x == -1 || y == -1))

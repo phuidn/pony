@@ -19,12 +19,12 @@ package
 			Grid.newGrid();
 			var plant :Structure = new Plant(30, 30);
 			add(plant);
+			Grid.addPlant(2, 2);
 			Grid.occupy(1, 1,plant);
 			Grid.occupy(2, 1,plant);
 			Grid.occupy(1, 2,plant);
-			Grid.occupy(2, 2,plant);
-			
-			
+			Grid.occupy(2, 2, plant);
+			add(new SpawnPoint(410, 410));
 			var hud : Hud = new Hud();
 			add(hud);
 		}
