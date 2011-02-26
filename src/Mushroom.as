@@ -22,11 +22,13 @@ package
 					target : Point = new Point(),
 					enemies : Array = [],
 					rangeSq : int = 10000;
+					
 		public function Mushroom(x: Number, y:Number) 
 		{
 			sprite = new Image(MUSHROOM);
 			super(x, y, sprite);
 		}
+		
 		public override function update() : void
 		{
 			var disTo : Number;
