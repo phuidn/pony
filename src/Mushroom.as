@@ -20,7 +20,8 @@ package
 		private var loadTime : int = 30,
 					eTime : int = 0,
 					target : Point = new Point(),
-					enemies : Array = [];
+					enemies : Array = [],
+					rangeSq : int = 10000;
 		public function Mushroom(x: Number, y:Number) 
 		{
 			sprite = new Image(MUSHROOM);
@@ -28,8 +29,10 @@ package
 		}
 		public override function update() : void
 		{
-			var disTo : Number = 3600;
+			var disTo : Number = rangeSq;
 			var tempDis : Number;
+			target.x = 0;
+			target.y = 0;
 			FP.world.getClass(Enemy, enemies);
 			for each (var e : Enemy in enemies)
 			{
@@ -37,13 +40,14 @@ package
 				if (tempDis < disTo)
 				{
 					disTo = tempDis;
-					//trace(disTo);
-					target.x = e.x - x; 
+					target.x = e.x - x;
 					target.y = e.y - y;
-				}	
+				}
 			}
-			if (target && eTime>loadTime)
+			
+			if (target.length && (eTime > loadTime) && (disTo != rangeSq))
 			{
+				trace(target);
 				target.normalize(1);
 				world.add(new Projectile(x, y, target.x, target.y));
 				eTime = 0;
