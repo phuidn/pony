@@ -15,14 +15,11 @@ package
 		private const NOTHING : int = 0;
 		private const PLACING : int = 1;
 		private const DELETING : int = 2;
-		private const BUILDING : int = 0;
-		private const SPAWNING : int = 1;
 		
 		[Embed(source = 'assets/grid.png')] private const GRID: Class;
 		private var sprite : Image = new Image(GRID);
 		
-		private var placing : int = NOTHING,
-					gameState : int = BUILDING;
+		private var placing : int = NOTHING;
 		
 		private var toPlace : String;
 		private var buttons : Array = new Array();
@@ -51,8 +48,8 @@ package
 		
 		override public function update():void 
 		{
-			if (gameState == BUILDING) {
-				
+			if (!Wavemanager.withInWave())
+			{				
 				if (Input.mouseReleased)
 				{
 					if (placing == NOTHING)
@@ -72,8 +69,7 @@ package
 									break;
 								}
 								case "Next":{
-									gameState = SPAWNING;
-									SpawnPoint.gameState = SPAWNING;
+									Wavemanager.nextWave();
 									break;
 								}
 								default: {	break; }
@@ -100,9 +96,11 @@ package
 									}
 									case "Pipe": { break;}
 									case "Barrel": { break; }
+									/*
 									case "Crack": {
 										trap = new Crack(10 + x * 20, 10 + y * 20);
 									}
+									*/
 									
 								}
 								if (stu)

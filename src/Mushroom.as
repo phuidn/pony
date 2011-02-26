@@ -12,18 +12,19 @@ package
 	public class Mushroom extends Structure 
 	{
 		[Embed(source = 'assets/greenMushroom.png')] private const GREEN_MUSHROOM: Class;
+		
 		//[Embed(source = 'assets/XML/Mushrooms.xml', mimeType = "application/octet-stream")] private const MUSHROOMS: Class;
-		private var damage :int = 1, // The damage the slick causes to enemies walking on it
+		private var damage :int = 5, // The damage the slick causes to enemies walking on it
 					slowing :int = 1, // The number to divide the speed of the unit on walking in the slick
 					cost: int = 10, // The power cost of buying the slick
 					powerUsage : int = 1, // The power usage of the unit
-					mushroomType :String= "Normal",
-					rangeSq : int = 10000;
+					mushroomType :String= "Normal";
 		
 		private var loadTime : int = 30,
 					eTime : int = 0,
 					target : Point = new Point(),
-					enemies : Array = [];
+					enemies : Array = [],
+					rangeSq : int = 10000;
 		
 		public function Mushroom(x: Number, y:Number) 
 		{
@@ -55,11 +56,11 @@ package
 			if ((target.x != 0) && (target.y != 0) && (eTime > loadTime) && (disTo < rangeSq))
 			{
 				target.normalize(1);
-				world.add(new Projectile(x, y, target.x, target.y));
+				world.add(new Projectile(x, y, target.x, target.y, rangeSq, damage));
 				eTime = 0;
 			}
 			eTime++; 
-			enemies =  [];
+			enemies = [];
 		}
 		
 		/*
