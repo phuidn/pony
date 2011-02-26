@@ -83,7 +83,6 @@ package
 					{
 						var x:Number = Grid.gridX(world.mouseX);
 						var y:Number = Grid.gridY(world.mouseY);
-						placing = NOTHING;
 						
 						if (!(x == -1 || y == -1))
 						{
@@ -115,12 +114,15 @@ package
 								trace(stu.x, stu.y);
 							}
 						}
+						else
+						{
+							placing = NOTHING;							
+						}
 					}
 					else if (placing == DELETING)
 					{
 						x = Grid.gridX(world.mouseX);
-						y = Grid.gridY(world.mouseY);
-						placing = NOTHING;
+						y = Grid.gridY(world.mouseY)
 						
 						if (!(x == -1 || y == -1))
 						{
@@ -130,8 +132,16 @@ package
 								{
 									FP.world.remove(Grid.at(x, y));
 									Grid.occupy(x, y, null);
+									for each (var s : SpawnPoint in Grid.getSpawn)
+									{
+										s.findpath();
+									}
 								}
 							}
+						}
+						else
+						{
+							placing = NOTHING;
 						}
 					}
 				}
