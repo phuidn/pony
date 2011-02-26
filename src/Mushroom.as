@@ -12,7 +12,7 @@ package
 	public class Mushroom extends Structure 
 	{
 		[Embed(source = 'assets/greenMushroom.png')] private const GREEN_MUSHROOM: Class;
-		[Embed(source = 'assets/XML/Mushrooms.xml', mimeType = "application/octet-stream")] private const MUSHROOMS: Class;
+		//[Embed(source = 'assets/XML/Mushrooms.xml', mimeType = "application/octet-stream")] private const MUSHROOMS: Class;
 		private var damage :int = 1, // The damage the slick causes to enemies walking on it
 					slowing :int = 1, // The number to divide the speed of the unit on walking in the slick
 					cost: int = 10, // The power cost of buying the slick

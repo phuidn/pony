@@ -11,7 +11,7 @@ package
 	public class Enemy extends Entity 
 	{
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
-		protected var speed : Number = 1;
+		public var speed : Number = 1;
 		public var	health : int = 20;
 		private var sprite : Image = new Image(ENEMY),
 					path :Array,
