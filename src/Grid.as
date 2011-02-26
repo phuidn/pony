@@ -14,6 +14,7 @@ package
 		private static const OFFSETY:Number = 10; 
 		private static var plant :Point;
 		private static var spawns:Array = new Array();
+		
 		public static function newGrid():void
 		{
 			for (var i:int = 0; i < 32; i++) {
