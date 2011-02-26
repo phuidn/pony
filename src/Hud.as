@@ -112,6 +112,7 @@ package
 										if (!(a = s.findpath()))
 										{
 											placing = 0;
+											
 											Grid.occupy(x, y,null);
 											return;
 										}

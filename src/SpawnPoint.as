@@ -22,6 +22,7 @@ package
 		public function findpath() : Array
 		{
 			path = Grid.findPath(Grid.getPlant(), new Point(Grid.gridX(x), Grid.gridY(y)));
+
 			return path;
 		}
 		

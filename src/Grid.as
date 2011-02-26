@@ -148,6 +148,7 @@ package
 				expand = expand.last;
 				ret.push(new Point(expand.x,expand.y));
 			}
+			
 			return ret;
 		}
 	}
