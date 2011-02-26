@@ -20,8 +20,6 @@ package
 		
 		public override function update() : void
 		{
-			x += (Math.random() - 0.5) * 5;
-			y += (Math.random() - 0.5) * 5;
 		}
 	}
 

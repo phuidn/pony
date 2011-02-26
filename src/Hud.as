@@ -12,21 +12,20 @@ package
 	 */
 	public class Hud extends Entity 
 	{
-				[Embed(source = 'assets/grid.png')] private const GRID: Class;
+		[Embed(source = 'assets/grid.png')] private const GRID: Class;
 		private var sprite : Image = new Image(GRID);
 		
 		private var placing : Boolean = false;
 		private var toPlace : String;
 		private var buttons : Array = new Array();
 		private var ran : Boolean = true;
-		private var grid :Grid = new Grid();
 		private const OFFSETX : int = 660;
 		private const OFFSETY : int = 500;
 		
 		public function Hud() 
 		{
+			layer = 2;
 			FP.screen.color = 0x0000FF;
-			
 			super(0, 0, sprite);
 		}
 		
@@ -61,10 +60,14 @@ package
 			{
 				if (Input.mouseReleased)
 				{
-					var x:Number = grid.gridX(world.mouseX);
-					var y:Number = grid.gridY(world.mouseY);
-					grid.occupy(x, y);
+					var x:Number = Grid.gridX(world.mouseX);
+					var y:Number = Grid.gridY(world.mouseY);
+					Grid.occupy(x, y);
+					trace(x);
+					trace(y);
 					placing = false;
+					if (Grid.free(x, y))
+							FP.world.add(new Enemy(10 + x * 20, 10 +y * 20));
 				}
 			}
 		}

@@ -14,13 +14,12 @@ package
 		private var sprite : Image = new Image(PLANT);
 		public function Plant(x:Number, y:Number) 
 		{
+			layer = 1;
 			super(x, y, sprite);
 		}
 		
 		public override function update():void
 		{
-			x += (Math.random() - 0.5) * 2;
-			y += (Math.random() - 0.5) * 2;
 		}
 		
 	}
