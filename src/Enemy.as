@@ -12,7 +12,7 @@ package
 	{
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
 		protected var speed : Number = 1;
-		public var	health : int = 15;
+		public var	health : int = 20;
 		private var sprite : Image = new Image(ENEMY),
 					path :Array,
 					pathelement : int;
@@ -60,6 +60,7 @@ package
 					pathelement++;
 				}
 			}
+			speed = 1;
 			if (health < 1)
 				world.remove(this);
 			

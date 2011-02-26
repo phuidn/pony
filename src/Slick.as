@@ -1,5 +1,6 @@
 package  
 {
+	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
 	/**
 	 * ...
@@ -29,6 +30,16 @@ package
 			}
 			
 			super (x, y, sprite);
+		}
+		
+		public override function update(): void
+		{
+			var e : Entity = collide("enemy", x, y);
+			if (e)
+			{
+				e.health -= damage;
+				e.speed *= slowing;
+			}
 		}
 		
 	}

@@ -23,6 +23,7 @@ package
 			super(x, y, sprite);
 			velocity = new Point(vx, vy);
 			setHitbox(10, 10, 5, 5);
+			type = "projectile";
 		}
 		
 		public override function update(): void
