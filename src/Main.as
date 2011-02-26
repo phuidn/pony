@@ -15,7 +15,7 @@ package
 		
 		public function Main():void 
 		{
-			super(640, 480);
+			super(800, 600);
 			var gWorld:GameWorld = new GameWorld();
 			FP.world = gWorld;
 			gWorld.init();
