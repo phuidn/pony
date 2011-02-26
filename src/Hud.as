@@ -15,7 +15,7 @@ package
 		private var toPlace : String;
 		private var buttons : Array = new Array();
 		private var ran : Boolean = true;
-		
+		private var grid :Grid = new Grid();
 		public function Hud() 
 		{
 
@@ -30,20 +30,35 @@ package
 				FP.world.add(but);
 				ran = false;
 			}
-			if (Input.mouseReleased)
+			if (!placing)
 			{
-				for each (var button : Button in buttons)
+				if (Input.mouseReleased)
 				{
-					var open : String = button.checkClick(world.mouseX, world.mouseY)
-					
-					if (open)
+					for each (var button : Button in buttons)
 					{
-						trace(open);
-					}					
+						var open : String = button.checkClick(world.mouseX, world.mouseY)
+						
+						if (open)
+						{
+							trace(open);
+							placing = true;
+							toPlace = open;
+							break;
+						}					
+					}
+				}
+			}
+			else
+			{
+				if (Input.mouseReleased)
+				{
+					var x:Number = grid.gridX(world.mouseX);
+					var y:Number = grid.gridY(world.mouseY);
+					grid.occupy(x, y);
+					placing = false;
 				}
 			}
 		}
-		
 	}
 
 }
