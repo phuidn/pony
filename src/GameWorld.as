@@ -8,7 +8,6 @@ package
 	 */
 	public class GameWorld extends World 
 	{
-		
 		public function GameWorld() 
 		{
 
