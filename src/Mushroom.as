@@ -49,14 +49,14 @@ package
 				}
 			}
 			
-			if (target.length && (eTime > loadTime) && (disTo != rangeSq))
+			if ((target.x != 0) && (target.y != 0) && (eTime > loadTime) && (disTo < rangeSq))
 			{
-				//trace(target);
 				target.normalize(1);
 				world.add(new Projectile(x, y, target.x, target.y));
 				eTime = 0;
 			}
-			eTime++;
+			eTime++; 
+			enemies =  [];
 		}
 	}
 }

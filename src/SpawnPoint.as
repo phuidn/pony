@@ -42,9 +42,7 @@ package
 				}
 				elapsedTime++;
 			}
-		}
-		
-		
+		}	
 	}
 
 }
