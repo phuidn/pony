@@ -10,7 +10,7 @@ package
 	public class Projectile extends Entity
 	{
 		[Embed(source = 'assets/blob.png')] private const BLOB: Class;
-		private var speed : Number = 5,
+		private var speed : Number = 6,
 					sprite : Image = new Image(BLOB),
 					velocity : Point;
 			
@@ -18,12 +18,21 @@ package
 		{
 			super(x, y, sprite);
 			velocity = new Point(vx, vy);
+			setHitbox(10, 10, 5, 5);
 		}
 		
 		public override function update(): void
 		{
+			var e: Enemy;
 			x += velocity.x * speed;
 			y += velocity.y * speed;
+			if (e = collide("enemy", x, y) as Enemy)
+			{
+				e.health -= 5
+				world.remove(this);
+			}
+			if (x < 0 || y < 0 || x > 680 || y > 520)
+				world.remove(this);
 		}
 		
 	}

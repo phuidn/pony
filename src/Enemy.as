@@ -11,8 +11,8 @@ package
 	public class Enemy extends Entity 
 	{
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
-		protected var speed : Number = 1,
-				health : int = 10;
+		protected var speed : Number = 1;
+		public var	health : int = 15;
 		private var sprite : Image = new Image(ENEMY),
 					path :Array,
 					pathelement : int;
@@ -24,6 +24,7 @@ package
 			super(x, y, sprite);		
 			var plant : Point = Grid.getPlant();
 			this.path = path;
+			type = "enemy";
 /*			if (path.length >2){
 				for (var i:int = path.length - 3 ; i >= 0 ; i-- ) {
 					if ((path[i].x == path[i + 1].x && path[i].x == path[i + 2].x))
@@ -59,6 +60,8 @@ package
 					pathelement++;
 				}
 			}
+			if (health < 1)
+				world.remove(this);
 			
 		}
 		
