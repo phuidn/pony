@@ -48,7 +48,6 @@ package
 						
 						if (open)
 						{
-							trace(open);
 							placing = true;
 							toPlace = open;
 							break;
@@ -62,12 +61,10 @@ package
 				{
 					var x:Number = Grid.gridX(world.mouseX);
 					var y:Number = Grid.gridY(world.mouseY);
-					Grid.occupy(x, y);
-					trace(x);
-					trace(y);
-					placing = false;
 					if (Grid.free(x, y))
-							FP.world.add(new Enemy(10 + x * 20, 10 +y * 20));
+							FP.world.add(new Structure(10 + x * 20, 10 +y * 20));
+					//Grid.occupy(x, y);
+					placing = false;
 				}
 			}
 		}

@@ -8,7 +8,7 @@ package
 	 * ...
 	 * @author Rob
 	 */
-	public class Plant extends Entity 
+	public class Plant extends Structure 
 	{
 		[Embed(source = 'assets/planty.png')] private const PLANT: Class;
 		private var sprite : Image = new Image(PLANT);

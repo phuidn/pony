@@ -15,6 +15,7 @@ package
 		private var sprite : Image = new Image(ENEMY);
 		public function Enemy(x : int, y : int) 
 		{
+			layer = 1;
 			super(x, y, sprite);		
 		}
 		
