@@ -8,7 +8,6 @@ package
 	 */
 	public class GameWorld extends World 
 	{
-		private var grid:Grid;
 		
 		public function GameWorld() 
 		{
@@ -17,8 +16,15 @@ package
 		
 		public function init():void
 		{
-			add(new Enemy(320, 240));
-			add(new Plant(0, 416));
+			Grid.newGrid();
+
+			add(new Plant(30, 30));
+			Grid.occupy(1, 1);
+			Grid.occupy(2, 1);
+			Grid.occupy(1, 2);
+			Grid.occupy(2, 2);
+			
+			
 			var hud : Hud = new Hud();
 			add(hud);
 		}
