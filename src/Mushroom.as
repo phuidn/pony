@@ -10,7 +10,7 @@ package
 	 */
 	public class Mushroom extends Structure 
 	{
-		[Embed(source = 'assets/greenMushroom.png')] private const MUSHROOM: Class;
+		[Embed(source = 'assets/greenMushroom.png')] private const GREEN_MUSHROOM: Class;
 		protected var damage :int = 1; // The damage the slick causes to enemies walking on it
 		protected var slowing :int = 1; // The number to divide the speed of the unit on walking in the slick
 		protected var cost: int = 10; // The power cost of buying the slick
@@ -22,10 +22,10 @@ package
 					target : Point = new Point(),
 					enemies : Array = [],
 					rangeSq : int = 10000;
-					
+		
 		public function Mushroom(x: Number, y:Number) 
 		{
-			sprite = new Image(MUSHROOM);
+			sprite = new Image(GREEN_MUSHROOM);
 			super(x, y, sprite);
 		}
 		
@@ -55,6 +55,11 @@ package
 				eTime = 0;
 			}
 			eTime++;
+		}
+		
+		public function LoadData(type : String):Boolean 
+		{
+			return true;
 		}
 	}
 }
