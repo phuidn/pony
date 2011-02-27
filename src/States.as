@@ -8,9 +8,9 @@ package
 	
 	public class States 
 	{
-		public static var power : Number = 100,
-							stability:Number = 100,
-							money :Number;
+		public static var	stability:Number = 100,
+							money : Number = 100,
+							score : Number = 0;
 		
 		public function States() 
 		{
@@ -36,23 +36,24 @@ package
 			return stability;
 		}
 		
-		public static function increasePower():void
+		public static function increaseMoney(toAdd : int):void
 		{
-			power = power * 1.5 + 10;
+			money += toAdd;
+			score += toAdd;
 		}
 		
-/*		public static function depletePower(toRemove : int):Boolean
+		public static function depleteMoney(toRemove : int):Boolean
 		{
-			if (power >= toRemove)
+			if (money >= toRemove)
 			{
-				power -= toRemove;
+				//money -= toRemove;
 				return true;
 			}
 			else
 			{
 				return false;
 			}
-		}*/
+		}
 	}
 
 }

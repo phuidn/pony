@@ -14,9 +14,10 @@ package
 		[Embed(source='assets/red mushroom.png')]private const SHROOM: Class;
 		private var damage :int = 5, // The damage the slick causes to enemies walking on it
 					slowing :int = 1, // The number to divide the speed of the unit on walking in the slick
-					cost: int = 10, // The power cost of buying the slick
 					powerUsage : int = 1, // The power usage of the unit
-					mushroomType :String= "Normal";
+					mushroomType :String = "Normal";					
+					
+		public static const cost : Number = 10;
 		
 		private var loadTime : int = 100,
 					eTime : int = 0,

@@ -82,8 +82,6 @@ package
 		public static function endWave():void
 		{
 			inWave = false;
-			
-			States.increasePower();
 		}
 	}
 }
