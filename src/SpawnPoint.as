@@ -36,7 +36,7 @@ package
 						case 1:
 						case 2: 
 						{
-							world.add(new Enemy(x, y, path));
+							world.add(new Suit(x, y, path));
 							break;
 						}
 						case 3:
