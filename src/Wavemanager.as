@@ -38,6 +38,10 @@ package
 				}
 			}			
 		}
+		public function getWaveHealth():int
+		{
+			return 10 + waveNo * 10;
+		}
 		
 		public static function nextType():int 
 		{
@@ -72,7 +76,7 @@ package
 		public static function enemyDeath():void 
 		{
 			alive--;
-			trace(wavepop, alive);
+			States.increaseMoney(15);
 			if (wavepop <= 0 && alive == 0)
 			{
 				endWave();

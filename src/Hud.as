@@ -119,7 +119,7 @@ package
 				}
 			}
 			
-			if (open == "")
+			if (open == "" && placing != NOTHING)
 			{
 				hudDesc.SelectType();
 				placing = NOTHING;	

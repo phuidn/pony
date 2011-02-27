@@ -17,10 +17,6 @@ package
 			
 		}
 		
-		public static function changeMoney(x:Number):void {
-			money += x;
-		}
-		
 		public static function enoghMoney(x:Number):Boolean {
 			return money > x;
 		}
@@ -46,7 +42,7 @@ package
 		{
 			if (money >= toRemove)
 			{
-				//money -= toRemove;
+				money -= toRemove;
 				return true;
 			}
 			else
