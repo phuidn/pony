@@ -52,7 +52,6 @@ package
 				FP.world.getClass(Enemy, enemies);
 				for each (var en : Enemy in enemies)
 				{
-					trace((new Point(x, y).subtract(new Point(en.x, en.y))).length);
 					if ((new Point(x, y).subtract(new Point(en.x, en.y))).length < 60)
 						en.health -= damage;
 					

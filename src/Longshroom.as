@@ -1,5 +1,10 @@
 package  
 {
+	import flash.display.GraphicsGradientFill;
+	import flash.geom.Point;
+	import flash.utils.ByteArray;
+	import net.flashpunk.graphics.Image;
+	import net.flashpunk.FP;
 	/**
 	 * ...
 	 * @author Samy
@@ -23,7 +28,7 @@ package
 		public function Longshroom(x: Number, y:Number) 
 		{
 			//LoadData(this.mushroomType);
-			sprite = new Image(GREEN_MUSHROOM);
+			//sprite = new Image(GREEN_MUSHROOM);
 			super(x, y, sprite);
 		}
 		

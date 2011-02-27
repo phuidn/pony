@@ -13,7 +13,7 @@ package
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
 		public var speed : Number = 1;
 		public var	health : Number = 20;
-		private var sprite : Image = new Image(ENEMY),
+		protected var sprite : Image = new Image(ENEMY),
 					path :Array,
 					pathelement : int = 0;
 
@@ -41,6 +41,8 @@ package
 				{
 					pathelement++;
 				}
+			}else {
+				//put the hurting plant code here, i supose
 			}
 			speed = 1;
 			
