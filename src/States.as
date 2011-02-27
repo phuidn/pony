@@ -11,6 +11,8 @@ package
 		public static var	stability:Number = 100,
 							money : Number = 100,
 							score : Number = 0;
+							
+		private static var reward : Number = 10;
 		
 		public function States() 
 		{
@@ -32,10 +34,10 @@ package
 			return stability;
 		}
 		
-		public static function increaseMoney(toAdd : int):void
+		public static function increaseMoney():void
 		{
-			money += toAdd;
-			score += toAdd;
+			money += reward;
+			score += reward;
 		}
 		
 		public static function depleteMoney(toRemove : int):Boolean

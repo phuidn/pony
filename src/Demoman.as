@@ -22,7 +22,7 @@ package
 			sprite2.add("left",[2]);
 			sprite2.add("right", [3]);
 			super(x, y, []);
-			health = 20;
+			health = Wavemanager.getWaveHealth();
 			speed = 2;
 			graphic = sprite2;
 			type = "enemy";
