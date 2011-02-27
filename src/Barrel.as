@@ -36,6 +36,7 @@ package
 			sprite.y = -20;
 			super(x, y, sprite);
 			layer = -y;
+			strucType = Structure.MUSHROOM;
 		}
 		
 		public override function update() : void
