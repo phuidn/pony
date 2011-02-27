@@ -36,6 +36,7 @@ package
 			super(x, y, sprite);
 			sprite.y = 0;
 			setHitbox(20, 20);
+			sprite.y = 0;
 		}
 		
 		public override function update() : void

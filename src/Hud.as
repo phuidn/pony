@@ -75,58 +75,76 @@ package
 			FP.world.add(hudDesc);
 		}
 		
+		public function	checkButtonPress():void
+		{
+			var open : String = "";
+			for each (var button : Button in buttons)
+			{
+				open = button.checkClick(world.mouseX, world.mouseY)
+				if (open) {
+					clicked = button;
+					clicked.clicked();
+				}
+				switch(open)
+				{
+					case "Delete":{
+						hudDesc.SelectType(open);
+						placing = DELETING;
+						break;
+					}
+					case "Mushroom": 
+					case "Pipe" : 
+					case "Barrel": 
+					case"Crack":
+					case"Slick":
+					case"Explode":
+					case"Long":
+					case "Wall": {
+						hudDesc.SelectType(open);
+						placing = PLACING;
+						toPlace = open;
+						break;
+					}
+					case "Next": {
+						if (!Wavemanager.withInWave())
+							Wavemanager.nextWave();
+						break;
+					}
+					default: {	break; }
+				}
+				
+				if (open != "")
+				{
+					break;
+				}
+			}
+			
+			if (open == "")
+			{
+				hudDesc.SelectType();
+				placing = NOTHING;	
+				clicked.unclick();
+			}			
+		}
+		
 		public override function update():void 
 		{
 			if (Input.mouseReleased)
 			{
 				if (placing == NOTHING)
 				{
-					for each (var button : Button in buttons)
-					{
-						var open : String = button.checkClick(world.mouseX, world.mouseY)
-						if (open) {
-							clicked = button;
-							clicked.clicked();
-						}
-						switch(open)
-						{
-							case "Delete":{
-								hudDesc.SelectType(open);
-								placing = DELETING;
-								break;
-							}
-							case "Mushroom": 
-							case "Pipe" : 
-							case "Barrel": 
-							case"Crack":
-							case"Slick":
-							case"Explode":
-							case"Long":
-							case "Wall": {
-								hudDesc.SelectType(open);
-								placing = PLACING;
-								toPlace = open;
-								break;
-							}
-							case "Next": {
-								if (!Wavemanager.withInWave())
-									Wavemanager.nextWave();
-								break;
-							}
-							default: {	break; }
-						}
-					}
-				
+					checkButtonPress();				
 				}
 				else if (placing == PLACING)
-				{					
-					if (!Wavemanager.withInWave())
+				{
+					var x:Number = Grid.gridX(world.mouseX);
+					var y:Number = Grid.gridY(world.mouseY);
+					
+					if (!(x == -1 || y == -1))
 					{
-						var x:Number = Grid.gridX(world.mouseX);
-						var y:Number = Grid.gridY(world.mouseY);
-						
-						if (!(x == -1 || y == -1))
+						if (!Wavemanager.withInWave())
 						{
+							
 							if (Grid.free(x, y)) 
 							{
 								var stu:Structure;
@@ -210,19 +228,10 @@ package
 								}
 							}
 						}
-						else
-						{
-							hudDesc.SelectType();
-							placing = NOTHING;	
-							clicked.unclick();						
-						}
-					}else {
-						x = Grid.gridX(world.mouseX);
-						y = Grid.gridY(world.mouseY);
-						
-						if (!(x == -1 || y == -1)) {
-							if (Grid.free(x, y) && !Grid.onPath(x,y)) {
-
+						else 
+						{						
+							if (Grid.free(x, y) && !Grid.onPath(x, y)) 
+							{
 								switch (toPlace)
 								{
 									case "Mushroom": {
@@ -266,18 +275,12 @@ package
 									}
 									FP.world.add(stu);
 								}
-
-								
 							}
-							
-							
 						}
-						else
-						{
-							hudDesc.SelectType();
-							placing = NOTHING;	
-							clicked.unclick();
-						}
+					}
+					else
+					{
+						checkButtonPress();						
 					}
 				}
 				else if (placing == DELETING)
@@ -302,9 +305,7 @@ package
 					}
 					else
 					{
-						hudDesc.SelectType();
-						placing = NOTHING;
-						clicked.unclick();
+						checkButtonPress();
 					}
 				}
 			}

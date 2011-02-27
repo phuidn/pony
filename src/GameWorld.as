@@ -28,8 +28,7 @@ package
 			Grid.occupy(30, 22, spawn);
 			Grid.occupy(30, 21, spawn);
 			Grid.occupy(29, 22, spawn);
-		//	Grid.occupy(29, 21, spawn);
-			var hud : Hud = new Hud();
+ 			var hud : Hud = new Hud();
 			add(hud);
 		}
 	}

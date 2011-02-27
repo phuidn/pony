@@ -107,7 +107,7 @@ package
 			}
 			else
 			{
-				return null;
+				return "";
 			}
 		}
 		
