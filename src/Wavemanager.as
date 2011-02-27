@@ -30,11 +30,11 @@ package
 			}
 			else if (waveNo > 0)
 			{
-				demolitionRatio = 1 /*- 1 / (waveNo - 2*/);
+				demolitionRatio = 1 /*- 1 / (waveNo - 2)*/;
 				
 				if (waveNo > 0)
 				{
-					suitRatio = 1 /*- 1 / (waveNo - 7*/);
+					suitRatio = 1 /*- 1 / (waveNo - 7)*/;
 				}
 			}			
 		}
