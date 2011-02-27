@@ -13,15 +13,15 @@ package
 	{
 		[Embed(source = 'assets/bluemushroom.png')] private const BLUE:Class;		
 		//[Embed(source = 'assets/XML/Mushrooms.xml', mimeType = "application/octet-stream")] private const MUSHROOMS: Class;
-		private var damage :int = 5, // The damage the slick causes to enemies walking on it
+		private var damage :int = 2, // The damage the slick causes to enemies walking on it
 					slowing :int = 1, // The number to divide the speed of the unit on walking in the slick
 					powerUsage : int = 1, // The power usage of the unit
 					mushroomType :String= "Normal";
 					
-		public static const cost : Number = 100;
+		public static const cost : Number = 120;
 		public static const description : String = "An interesting case of \nradiation causing local\nfolora and fauna to    \nattack. A long ranged  \nattack.";
 		
-		private var loadTime : int = 100,
+		private var loadTime : int = 150,
 					eTime : int = 0,
 					target : Point = new Point(),
 					enemies : Array = [],

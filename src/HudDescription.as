@@ -95,7 +95,7 @@ package
 				{
 					((graphic as Graphiclist).children)[0] = new Image(WALL);
 					
-					costText.text = "Cost: " + 5;
+					costText.text = "Cost: " + 2;
 					disText.text = "An unstable roof has   \ncolapsed causing a wall\nto block the path.";
 					break;
 				}
