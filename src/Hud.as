@@ -302,6 +302,7 @@ package
 					}
 					else
 					{
+						hudDesc.SelectType();
 						placing = NOTHING;
 						clicked.unclick();
 					}
