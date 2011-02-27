@@ -28,6 +28,7 @@ package
 		private var ran : Boolean = true;
 		private const OFFSETX : int = 660;
 		private const OFFSETY : int = 500;
+		private var hudDesc : HudDescription;
 		
 		private var stability : Text = new Text("100", 670, 50, 130);
 		private var money : Text = new Text("100", 670, 90, 130);
@@ -50,25 +51,27 @@ package
 		
 		public override function added():void
 		{
-				buttons[0] = new Button(10, OFFSETY + 10, "Mushroom");
-				buttons[1] = new Button(40, OFFSETY + 10, "Delete");
-				buttons[2] = new Button(70, OFFSETY + 10, "Next");
-				buttons[3] = new Button(100, OFFSETY + 10, "Slick");
-				buttons[4] = new Button(130, OFFSETY + 10, "Long");
-				buttons[5] = new Button(160, OFFSETY + 10, "Explode");
-				buttons[6] = new Button(190, OFFSETY + 10, "Crack");
-				buttons[7] = new Button(220, OFFSETY + 10, "Barrel");
-				buttons[8] = new Button(250, OFFSETY + 10, "Wall");
-				
-				FP.world.add(buttons[0]);
-				FP.world.add(buttons[1]);
-				FP.world.add(buttons[2]);
-				FP.world.add(buttons[3]);
-				FP.world.add(buttons[4]);
-				FP.world.add(buttons[5]);
-				FP.world.add(buttons[6]);
-				FP.world.add(buttons[7]);
-				FP.world.add(buttons[8]);
+			buttons[0] = new Button(10, OFFSETY + 10, "Mushroom");
+			buttons[1] = new Button(40, OFFSETY + 10, "Delete");
+			buttons[2] = new Button(70, OFFSETY + 10, "Next");
+			buttons[3] = new Button(100, OFFSETY + 10, "Slick");
+			buttons[4] = new Button(130, OFFSETY + 10, "Long");
+			buttons[5] = new Button(160, OFFSETY + 10, "Explode");
+			buttons[6] = new Button(190, OFFSETY + 10, "Crack");
+			buttons[7] = new Button(220, OFFSETY + 10, "Barrel");
+			buttons[8] = new Button(250, OFFSETY + 10, "Wall");
+			hudDesc = new HudDescription();
+			
+			FP.world.add(buttons[0]);
+			FP.world.add(buttons[1]);
+			FP.world.add(buttons[2]);
+			FP.world.add(buttons[3]);
+			FP.world.add(buttons[4]);
+			FP.world.add(buttons[5]);
+			FP.world.add(buttons[6]);
+			FP.world.add(buttons[7]);
+			FP.world.add(buttons[8]);
+			FP.world.add(hudDesc);
 		}
 		
 		public override function update():void 
@@ -93,7 +96,8 @@ package
 							case"Slick":
 							case"Explode":
 							case"Long":
-							case "Wall":{
+							case "Wall": {
+								hudDesc.SelectType(open);
 								placing = PLACING;
 								toPlace = open;
 								break;
