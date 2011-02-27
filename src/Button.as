@@ -1,9 +1,12 @@
 package  
 {
 	import net.flashpunk.Entity;
+	import net.flashpunk.Graphic;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Graphiclist;
+	import net.flashpunk.graphics.Spritemap;
 	/**
 	 * ...
 	 * @author David
@@ -16,7 +19,6 @@ package
 		heightY : int,
 		widthX : int;
 		
-		
 		[Embed(source = 'assets/enemy.png')] private const BUTTON: Class;
 		[Embed(source = 'assets/greenMushroom.png')] private const GREENMUSHROOM: Class;		
 		[Embed(source = 'assets/Delete.png')] private const img: Class;
@@ -25,17 +27,21 @@ package
 		[Embed(source = 'assets/red mushroom.png')] private const REDMUSHROOM: Class;;
 		[Embed(source = 'assets/barrel.png')] private const BARREL: Class;
 
-				
+	
+		private var sm:Spritemap = new Spritemap(BUTTON, 40, 40);			
 		private var sprite : Image = new Image(BUTTON);
 		
-		public function Button(posX : int, posY : int, buttonType : String, height : int = 32, width : int = 32) 
+		public function Button(posX : int, posY : int, buttonType : String, height : int = 40, width : int = 40) 
 		{
+			sm.add("not clicked",[0]);
+			sm.add("clicked",[1]);
 			this.heightY = height;
 			this.widthX = width;
 			this.posX = posX;
 			this.posY = posY;
 			this.buttonType = buttonType;
-			
+			graphic = new Graphiclist();
+			(graphic as Graphiclist).add(sm);
 			switch(buttonType)
 			{
 				case "Delete":{
@@ -70,7 +76,9 @@ package
 					break;
 				}
 			}
-			super(posX, posY, sprite);
+			super(posX, posY);
+			(graphic as Graphiclist).add(sprite);
+			sm.play("not clicked");
 		}
 		
 		public function checkClick(pointX : int, pointY : int) : String
@@ -85,6 +93,13 @@ package
 			}
 		}
 		
+		public function clicked():void {
+			sm.play("clicked");
+		}
+		
+		public function unclick():void {
+			sm.play("not clicked");
+		}
 	}
 
 }

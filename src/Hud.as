@@ -22,7 +22,7 @@ package
 		private var sprite : Image = new Image(GRID);
 		
 		private var placing : int = NOTHING;
-		
+		private var clicked: Button;
 		private var toPlace : String;
 		private var buttons : Array = new Array();
 		private var ran : Boolean = true;
@@ -51,14 +51,14 @@ package
 		public override function added():void
 		{
 				buttons[0] = new Button(10, OFFSETY + 10, "Mushroom");
-				buttons[1] = new Button(40, OFFSETY + 10, "Delete");
-				buttons[2] = new Button(70, OFFSETY + 10, "Next");
-				buttons[3] = new Button(100, OFFSETY + 10, "Slick");
-				buttons[4] = new Button(130, OFFSETY + 10, "Long");
-				buttons[5] = new Button(160, OFFSETY + 10, "Explode");
-				buttons[6] = new Button(190, OFFSETY + 10, "Crack");
-				buttons[7] = new Button(220, OFFSETY + 10, "Barrel");
-				buttons[8] = new Button(250, OFFSETY + 10, "Wall");
+				buttons[1] = new Button(70, OFFSETY + 10, "Slick");
+				buttons[2] = new Button(130, OFFSETY + 10, "Long");
+				buttons[3] = new Button(190, OFFSETY + 10, "Explode");
+				buttons[4] = new Button(250, OFFSETY + 10, "Crack");
+				buttons[5] = new Button(310, OFFSETY + 10, "Barrel");
+				buttons[6] = new Button(370, OFFSETY + 10, "Wall");
+				buttons[7] = new Button(430, OFFSETY + 10, "Delete");
+				buttons[8] = new Button(700, OFFSETY + 10, "Next");
 				
 				FP.world.add(buttons[0]);
 				FP.world.add(buttons[1]);
@@ -105,6 +105,8 @@ package
 							}
 							default: {	break; }
 						}
+						clicked = button;
+						clicked.clicked();
 					}
 				
 				}
@@ -207,7 +209,8 @@ package
 						}
 						else
 						{
-							placing = NOTHING;							
+							placing = NOTHING;	
+							clicked.unclick();						
 						}
 					}else {
 						x = Grid.gridX(world.mouseX);
@@ -270,7 +273,8 @@ package
 						}
 						else
 						{
-							placing = NOTHING;							
+							placing = NOTHING;	
+							clicked.unclick();
 						}
 					}
 				}
@@ -297,6 +301,7 @@ package
 					else
 					{
 						placing = NOTHING;
+						clicked.unclick();
 					}
 				}
 			}
