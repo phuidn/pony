@@ -29,7 +29,9 @@ package
 		private const OFFSETX : int = 660;
 		private const OFFSETY : int = 500;
 		
-		private var text : Text = new Text("100", 670, 50, 130);
+		private var stability : Text = new Text("100", 670, 50, 130);
+		private var money : Text = new Text("100", 670, 90, 130);
+		private var score : Text = new Text("100", 670, 130, 130);
 		
 		public function Hud() 
 		{
@@ -38,8 +40,12 @@ package
 			graphic = new Graphiclist();
 			(graphic as Graphiclist).add(new Image(GRID));
 			(graphic as Graphiclist).add(new Text("PONY", 670, 10));
-			(graphic as Graphiclist).add(new Text("Power: ", 670, 30));
-			(graphic as Graphiclist).add(text);			
+			(graphic as Graphiclist).add(new Text("Stability: ", 670, 30));
+			(graphic as Graphiclist).add(stability);
+			(graphic as Graphiclist).add(new Text("Money: ", 670, 70));
+			(graphic as Graphiclist).add(money);
+			(graphic as Graphiclist).add(new Text("Score: ", 670, 110));
+			(graphic as Graphiclist).add(score);
 		}
 		
 		public override function added():void
@@ -119,34 +125,59 @@ package
 								{
 									case "Mushroom":
 									{
-										//if (States.depletePower(10))
-										//{
+										if (States.depleteMoney(Mushroom.cost))
+										{
 											stu = new Mushroom(10 + x * 20, 10 + y * 20);
-										//}
+										}
 										break;
 									}
-									case "Slick": {
-										stu = new Slick(10 + x * 20, 10 + y * 20);
+									case "Slick":
+									{
+										if (States.depleteMoney(Slick.cost))
+										{
+											stu = new Slick(10 + x * 20, 10 + y * 20);
+										}
 										break;
 									}
-									case "Barrel": { 
-										stu = new Barrel(10 + x * 20, 10 + y * 20);
+									case "Barrel":
+									{
+										if (States.depleteMoney(Barrel.cost))
+										{ 
+											stu = new Barrel(10 + x * 20, 10 + y * 20);
+										}
 										break; 
 									}
-									case "Crack": { 
-										stu = new Crack(10 + x * 20, 10 + y * 20);
+									case "Crack": 
+									{ 
+										
+										if (States.depleteMoney(Crack.cost))
+										{
+											stu = new Crack(10 + x * 20, 10 + y * 20);
+										}
 										break; 
 										}
-									case "Long": {
-										stu = new Longshroom(10 + x * 20, 10 + y * 20);
+									case "Long":
+									{
+										if (States.depleteMoney(Longshroom.cost))
+										{
+											stu = new Longshroom(10 + x * 20, 10 + y * 20);
+										}
 										break;
 									}
-									case "Explode": {
-										stu = new Splodeshroom(10 + x * 20, 10 + y * 20);
+									case "Explode":
+									{
+										if (States.depleteMoney(Splodeshroom.cost))
+										{
+											stu = new Splodeshroom(10 + x * 20, 10 + y * 20);
+										}
 										break;
 									}
-									case "Wall": {
-										stu = new Structure(10 + x * 20, 10 + y * 20);
+									case "Wall":
+									{										
+										if (States.depleteMoney(5))
+										{
+											stu = new Structure(10 + x * 20, 10 + y * 20);
+										}
 									}
 									
 								}
@@ -270,7 +301,9 @@ package
 				}
 			}
 			
-			text.text = States.power.toString();
+			stability.text = States.stability.toString();
+			money.text = States.money.toString();
+			score.text = States.score.toString();
 		}
 	}
 

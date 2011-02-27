@@ -15,8 +15,9 @@ package
 		
 		protected var 	damage :Number, // The damage the slick causes to enemies walking on it
 						slowing : Number, // The number to divide the speed of the unit on walking in the slick
-						cost: int, // The power cost of buying the slick
-						powerUsage : int; 
+						powerUsage : int;
+					
+		public static const cost : Number = 10;
 			
 		public function Crack(x:int, y:int,sprite:Image = null) 
 		{
@@ -30,7 +31,6 @@ package
 			strucType = SLICK;
 			damage = 0.01; // The damage the slick causes to enemies walking on it
 			slowing = 1; // The number to divide the speed of the unit on walking in the slick
-			cost = 10; // The power cost of buying the slick
 			powerUsage = 1; 
 			layer = - y;
 		}

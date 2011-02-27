@@ -9,8 +9,8 @@ package
 	public class States 
 	{
 		public static var	stability:Number = 100,
-							money : Number,
-							score : Number;
+							money : Number = 100,
+							score : Number = 0;
 		
 		public function States() 
 		{
