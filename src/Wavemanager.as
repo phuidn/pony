@@ -24,7 +24,7 @@ package
 			wavepop = (1 + waveNo) * 5;
 			alive = 0;
 			
-			if (waveNo % 5 == 0)
+			if (waveNo % 2 == 0)
 			{
 				demolitionRatio = 6;
 			}

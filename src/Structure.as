@@ -15,7 +15,7 @@ package
 		public static const SLICK: int = 4;
 		public static const NOTHING : int = 0;
 		
-		protected var sprite : Image;		
+		protected var sprite : Image;
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
 		
 		protected var strucType : int = NOTHING;
