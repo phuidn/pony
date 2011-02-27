@@ -16,7 +16,8 @@ package
 		public var	health : Number = 20;
 		protected var path :Array,
 					pathelement : int = 0,
-					sprite:Spritemap = new Spritemap(ENEMY,20,40);
+					sprite:Spritemap = new Spritemap(ENEMY, 20, 40),
+					hitcount:int = 0;
 
 		public function Enemy(x : int, y : int, path : Array) 
 		{
@@ -54,7 +55,11 @@ package
 					pathelement++;
 				}
 			}else {
-				//put the hurting plant code here, i supose
+				hitcount++;
+				if (hitcount > 100) {
+					States.changeStability( -5);
+					hitcount = 0;
+				}
 			}
 			speed = 1;
 			

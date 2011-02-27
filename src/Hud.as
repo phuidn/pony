@@ -29,7 +29,7 @@ package
 		private const OFFSETX : int = 660;
 		private const OFFSETY : int = 500;
 		
-		private var text : Text;
+		private var text : Text = new Text("100", 670, 50, 130);
 		
 		public function Hud() 
 		{
@@ -37,8 +37,9 @@ package
 			FP.screen.color = 0x0000FF;
 			graphic = new Graphiclist();
 			(graphic as Graphiclist).add(new Image(GRID));
-			(graphic as Graphiclist).add(new Text("PONY", 670, 10, 130, 30));
-			
+			(graphic as Graphiclist).add(new Text("PONY", 670, 10));
+			(graphic as Graphiclist).add(new Text("Power: ", 670, 30));
+			(graphic as Graphiclist).add(text);			
 		}
 		
 		public override function added():void
@@ -113,15 +114,18 @@ package
 								var trap:Slick;
 								switch (toPlace)
 								{
-									case "Mushroom": {
-										stu = new Mushroom(10 + x * 20, 10 + y * 20);
+									case "Mushroom":
+									{
+										//if (States.depletePower(10))
+										//{
+											stu = new Mushroom(10 + x * 20, 10 + y * 20);
+										//}
 										break;
 									}
 									case "Slick": {
 										stu = new Slick(10 + x * 20, 10 + y * 20);
 										break;
 									}
-									case "Pipe": { break;}
 									case "Barrel": { 
 										stu = new Barrel(10 + x * 20, 10 + y * 20);
 										break; 
@@ -260,6 +264,8 @@ package
 					}
 				}
 			}
+			
+			text.text = States.power.toString();
 		}
 	}
 

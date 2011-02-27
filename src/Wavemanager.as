@@ -28,13 +28,13 @@ package
 			{
 				demolitionRatio = 6;
 			}
-			else if (waveNo > 2)
+			else if (waveNo > 0)
 			{
-				demolitionRatio = 1 - 1 / (waveNo - 2);
+				demolitionRatio = 1 /*- 1 / (waveNo - 2*/);
 				
-				if (waveNo > 7)
+				if (waveNo > 0)
 				{
-					suitRatio = 1 - 1 / (waveNo - 7);
+					suitRatio = 1 /*- 1 / (waveNo - 7*/);
 				}
 			}			
 		}
@@ -75,8 +75,15 @@ package
 			trace(wavepop, alive);
 			if (wavepop <= 0 && alive == 0)
 			{
-				inWave = false;
+				endWave();
 			}
+		}
+		
+		public static function endWave():void
+		{
+			inWave = false;
+			
+			States.increasePower();
 		}
 	}
 }
