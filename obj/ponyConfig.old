@@ -17,21 +17,12 @@
       <value>'27/02/2011'</value>
     </define>
     <source-path append="true">
-<<<<<<< HEAD
       <path-element>C:\Users\Sam\Documents\pony\src</path-element>
       <path-element>C:\Program Files (x86)\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
   </compiler>
   <file-specs>
     <path-element>C:\Users\Sam\Documents\pony\src\Main.as</path-element>
-=======
-      <path-element>C:\Users\Rob\Programming\Flash\pony\src</path-element>
-      <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
-    </source-path>
-  </compiler>
-  <file-specs>
-    <path-element>C:\Users\Rob\Programming\Flash\pony\src\Main.as</path-element>
->>>>>>> 0e04a1f1b015ef915d3235c38a9897ef5ee7a954
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>
