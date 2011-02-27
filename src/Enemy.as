@@ -62,13 +62,11 @@ package
 				}
 			}
 			speed = 1;
-			/*
 			if (health < 1)
 			{
 				world.remove(this);
 				Wavemanager.enemyDeath();
 			}
-			*/
 		}
 		
 	}

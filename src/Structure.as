@@ -22,6 +22,7 @@ package
 		
 		public function Structure(x:int, y:int, sprite:Image = null)
 		{
+			layer = 2;
 			if (sprite)
 				this.sprite = sprite;
 			else 
