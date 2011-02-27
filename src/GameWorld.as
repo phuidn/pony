@@ -23,7 +23,7 @@ package
 			Grid.occupy(2, 1,plant);
 			Grid.occupy(1, 2,plant);
 			Grid.occupy(2, 2, plant);
-			add(new SpawnPoint(410, 410));
+			add(new SpawnPoint(630, 470));
 			var hud : Hud = new Hud();
 			add(hud);
 		}

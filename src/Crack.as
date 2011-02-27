@@ -21,7 +21,6 @@ package
 			
 		public function Crack(x:int, y:int,sprite:Image = null) 
 		{
-			type = "slick";
 			setHitbox(20, 20);
 			super (x, y,sprite);
 			if (!sprite)
@@ -32,19 +31,8 @@ package
 			damage = 0.01; // The damage the slick causes to enemies walking on it
 			slowing = 1; // The number to divide the speed of the unit on walking in the slick
 			powerUsage = 1; 
-			layer = - y;
+			type = "crack";
 		}
-		
-		public override function update(): void
-		{
-			var e :Enemy = collide("enemy", x, y) as Enemy;
-			if (e)
-			{
-				e.health -= damage;
-				e.speed *= slowing;
-			}
-		}
-		
 	}
 
 }

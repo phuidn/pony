@@ -39,6 +39,19 @@ package
 		
 		public override function update() : void
 		{
+			
+			var e :Slick = collide("slick", x, y) as Slick;
+			if (e)
+			{
+				health -= e.dam;
+			}
+
+			var d :Crack = collide("crack", x, y) as Crack;
+			if (d)
+			{
+				trace("UIB");
+				speed = 0.5;
+			}
 
 			if (pathelement < path.length - 1)
 			{
@@ -52,25 +65,7 @@ package
 				if (moveY<0) sprite.play("up");
 				if (moveY>0) sprite.play("down");
 
-		/*		if (moveX>0 && (Grid.gridX(this.x) == path[pathelement + 1].x) )
-					pathelement++;
-				if (moveX<0 && (Grid.gridX(this.x+19) == path[pathelement + 1].x) )
-					pathelement++;
-				if (moveY<0 && (Grid.gridX(this.y) == path[pathelement + 1].y) )
-					pathelement++;
-				if (moveY>0 && (Grid.gridX(this.y+19) == path[pathelement + 1].y) )
-					pathelement++;
-
-				if ((Grid.gridX(this.x + 15) == path[pathelement + 1].x) && (Grid.gridY(this.y + 15) == path[pathelement + 1].y) &&
-					(Grid.gridX(this.x +5) == path[pathelement + 1].x) && (Grid.gridY(this.y +5) == path[pathelement + 1].y)  &&
-					(Grid.gridX(this.x + 15) == path[pathelement + 1].x) && (Grid.gridY(this.y+5 ) == path[pathelement + 1].y) &&
-					(Grid.gridX(this.x+5) == path[pathelement + 1].x) && (Grid.gridY(this.y+15) == path[pathelement + 1].y))
-				{
-					pathelement++;
-				} */
-				trace(count);
 				if (count >= 20) {
-					trace("UIHIH");
 					pathelement++;
 					count = 0;
 				}
@@ -82,6 +77,8 @@ package
 				}
 			}
 			speed = 1;
+			
+			
 			
 			if (health < 1)
 			{
