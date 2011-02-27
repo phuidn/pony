@@ -201,7 +201,7 @@ package
 									}
 									case "Wall":
 									{										
-										if (States.depleteMoney(5))
+										if (States.depleteMoney(2))
 										{
 											stu = new Structure(10 + x * 20, 10 + y * 20);
 										}
@@ -212,8 +212,7 @@ package
 								{
 									Grid.occupy(x, y, stu);
 									for each (var s : SpawnPoint in Grid.getSpawn)
-									{	
-
+									{
 										var a : Array;
 										if (!(a = s.findpath()))
 										{

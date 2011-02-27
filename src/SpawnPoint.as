@@ -2,6 +2,7 @@ package
 {
 	import flash.geom.Point;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.FP;
 	/**
 	 * ...
 	 * @author David
@@ -10,7 +11,7 @@ package
 	{
 		[Embed(source = 'assets/spawn.png')] private const SPAWN: Class;
 
-		private var spawnTime : int = 94,
+		private var spawnTime : Number = 0,
 					elapsedTime : int = 0,
 					path : Array;
 		
@@ -36,6 +37,7 @@ package
 			{
 				if (elapsedTime > spawnTime)
 				{
+					spawnTime = FP.random * 50;
 					switch (Wavemanager.nextType())
 					{
 						case 1: 
