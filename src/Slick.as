@@ -13,23 +13,25 @@ package
 		
 		[Embed(source = 'assets/slick.png')] private const SLICKPIC: Class;
 		
-		protected var 	damage :int, // The damage the slick causes to enemies walking on it
-						slowing : int, // The number to divide the speed of the unit on walking in the slick
+		protected var 	damage :Number, // The damage the slick causes to enemies walking on it
+						slowing : Number, // The number to divide the speed of the unit on walking in the slick
 						cost: int, // The power cost of buying the slick
 						powerUsage : int; 
 			
-		public function Slick(x:int, y:int) 
+		public function Slick(x:int, y:int,sprite:Image = null) 
 		{
+			type = "slick";
+			setHitbox(20, 20);
+			super (x, y,sprite);
 			if (!sprite)
 			{
-				this.sprite = new Image(SLICKPIC);
+				graphic= new Image(SLICKPIC);
 			}
 			strucType = SLICK;
-			damage = 1; // The damage the slick causes to enemies walking on it
+			damage = 0.01; // The damage the slick causes to enemies walking on it
 			slowing = 1; // The number to divide the speed of the unit on walking in the slick
 			cost = 10; // The power cost of buying the slick
 			powerUsage= 1; 
-			super (x, y, sprite);
 		}
 		
 		public override function update(): void

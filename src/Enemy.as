@@ -12,7 +12,7 @@ package
 	{
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
 		public var speed : Number = 1;
-		public var	health : int = 20;
+		public var	health : Number = 20;
 		private var sprite : Image = new Image(ENEMY),
 					path :Array,
 					pathelement : int = 0;
@@ -39,7 +39,6 @@ package
 				this.y += moveY * speed;
 				if ((Grid.gridX(this.x+19) == path[pathelement + 1].x) && (Grid.gridY(this.y+19) == path[pathelement + 1].y))
 				{
-					trace(pathelement);
 					pathelement++;
 				}
 			}

@@ -1,18 +1,12 @@
 package  
 {
-	import flash.display.GraphicsGradientFill;
-	import flash.geom.Point;
-	import flash.utils.ByteArray;
-	import net.flashpunk.graphics.Image;
-	import net.flashpunk.FP;
 	/**
 	 * ...
-	 * @author Rob
+	 * @author Samy
 	 */
-	public class Mushroom extends Structure 
+	public class Longshroom extends Structure 
 	{
-		[Embed(source = 'assets/greenMushroom.png')] private const GREEN_MUSHROOM: Class;
-		
+				
 		//[Embed(source = 'assets/XML/Mushrooms.xml', mimeType = "application/octet-stream")] private const MUSHROOMS: Class;
 		private var damage :int = 5, // The damage the slick causes to enemies walking on it
 					slowing :int = 1, // The number to divide the speed of the unit on walking in the slick
@@ -20,15 +14,14 @@ package
 					powerUsage : int = 1, // The power usage of the unit
 					mushroomType :String= "Normal";
 		
-		private var loadTime : int = 30,
+		private var loadTime : int = 100,
 					eTime : int = 0,
 					target : Point = new Point(),
 					enemies : Array = [],
-					rangeSq : int = 10000;
-		
-		public function Mushroom(x: Number, y:Number) 
+					rangeSq : int = 100000;
+	
+		public function Longshroom(x: Number, y:Number) 
 		{
-			strucType = MUSHROOM;
 			//LoadData(this.mushroomType);
 			sprite = new Image(GREEN_MUSHROOM);
 			super(x, y, sprite);
@@ -57,40 +50,13 @@ package
 			if ((target.x != 0) && (target.y != 0) && (eTime > loadTime) && (disTo < rangeSq))
 			{
 				target.normalize(1);
-				world.add(new Projectile(x, y, target.x, target.y, rangeSq, damage));
+				world.add(new Bullet(x, y, target.x, target.y, rangeSq, damage));
 				eTime = 0;
 			}
 			eTime++; 
 			enemies = [];
 		}
 		
-		/*
-		public function LoadData(type : String):Boolean 
-		{
-			var rawData : ByteArray = new MUSHROOMS;
-			var dataString = rawData.readUTFBytes(rawData.length);
-			var file : XML = new XML(dataString);
-			var dataList = file.data.mushroom.mushrooms;
-			var dataElement : XML;
-			var found : Boolean = false;
-			
-			for each (dataElement in dataList)
-			{
-				if (String(dataElement.@type) == type)
-				{
-					found = true;
-					damage = int(dataElement.@damage);
-					slowing = int(dataElement.@slowing);
-					cost = int(dataElement.@cost);
-					powerUsage = int(dataElement.@powerUsage);
-					rangeSq = int(dataElement.@rangeSq);
-					trace(damage);
-					break;
-				}
-			}
-			
-			return found;
-		}
-		*/
+
 	}
 }
