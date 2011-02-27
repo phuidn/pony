@@ -41,8 +41,6 @@ package
 		
 		public override function update() : void
 		{
-
-
 			if (eTime > loadTime){			
 				FP.world.getClass(Enemy, enemies);
 				eTime = 0;
@@ -57,8 +55,7 @@ package
 			}
 			eTime++;
 			enemies = [];
-		}
-		
+		}		
 
 	}
 }
