@@ -33,11 +33,17 @@ package
 				{
 					switch (Wavemanager.nextType())
 					{
-						case 1: case 2: case 3:
+						case 1:
+						case 2: 
 						{
 							world.add(new Enemy(x, y, path));
 							break;
 						}
+						case 3:
+						{
+							world.add(new Suit(x, y, path));
+							break;
+						}	
 						default:
 						{
 							break;
@@ -48,6 +54,10 @@ package
 				elapsedTime++;
 			}
 		}	
+		
+		public function get getPath():Array {
+			return path;
+		}
 	}
 
 }

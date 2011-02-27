@@ -19,6 +19,7 @@ package
 			sprite = new Image(PLANT_SPRITE);
 			layer = 1;
 			super(x, y, sprite);
+			setHitbox(40, 40);
 		}
 		
 		public override function update():void

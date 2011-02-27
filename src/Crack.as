@@ -6,7 +6,7 @@ package
 	 * ...
 	 * @author David
 	 */
-	public class Slick extends Structure 
+	public class Crack extends Structure 
 	{
 		protected var slickType :String = "Normal";
 
@@ -18,7 +18,7 @@ package
 						cost: int, // The power cost of buying the slick
 						powerUsage : int; 
 			
-		public function Slick(x:int, y:int,sprite:Image = null) 
+		public function Crack(x:int, y:int,sprite:Image = null) 
 		{
 			type = "slick";
 			setHitbox(20, 20);
