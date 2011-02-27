@@ -12,7 +12,7 @@ package
 							money : Number = 100,
 							score : Number = 0;
 							
-		private static var reward : Number = 10;
+		private static var reward : Number = 15;
 		
 		public function States() 
 		{
