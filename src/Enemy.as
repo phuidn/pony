@@ -12,7 +12,7 @@ package
 	{
 		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
 		public var speed : Number = 1;
-		public var	health : int = 20;
+		public var	health : Number = 20;
 		private var sprite : Image = new Image(ENEMY),
 					path :Array,
 					pathelement : int = 0;

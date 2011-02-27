@@ -56,7 +56,7 @@ package
 			if ((target.x != 0) && (target.y != 0) && (eTime > loadTime) && (disTo < rangeSq))
 			{
 				target.normalize(1);
-				world.add(new Projectile(x, y, target.x, target.y, rangeSq, damage));
+				world.add(new Bullet(x, y, target.x, target.y, rangeSq, damage));
 				eTime = 0;
 			}
 			eTime++; 

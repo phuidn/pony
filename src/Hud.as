@@ -2,9 +2,11 @@ package
 {
 	import adobe.utils.CustomActions;
 	import net.flashpunk.Entity;
+	import net.flashpunk.graphics.Graphiclist;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Text;
 	
 	/**
 	 * ...
@@ -27,11 +29,16 @@ package
 		private const OFFSETX : int = 660;
 		private const OFFSETY : int = 500;
 		
+		private var text : Text;
+		
 		public function Hud() 
 		{
-			layer = 2;
+			layer = 3;
 			FP.screen.color = 0x0000FF;
-			super(0, 0, sprite);
+			graphic = new Graphiclist();
+			(graphic as Graphiclist).add(new Image(GRID));
+			(graphic as Graphiclist).add(new Text("PONY", 670, 10, 130, 30));
+			
 		}
 		
 		public override function added():void
@@ -46,7 +53,7 @@ package
 				FP.world.add(buttons[3]);
 		}
 		
-		override public function update():void 
+		public override function update():void 
 		{
 			if (Input.mouseReleased)
 			{
@@ -101,11 +108,10 @@ package
 									}
 									case "Pipe": { break;}
 									case "Barrel": { break; }
-									/*
-									case "Crack": {
-										trap = new Crack(10 + x * 20, 10 + y * 20);
+									case "Crack": 
+									{
+										trap = new Slick(10 + x * 20, 10 + y * 20);
 									}
-									*/
 									
 								}
 								if (stu)
@@ -124,7 +130,6 @@ package
 											return;
 										}
 									}
-									trace("FUCK YOU GAME");
 									FP.world.add(stu);
 								}
 								if (trap)
@@ -148,6 +153,10 @@ package
 								{
 									case "Mushroom": {
 										stu = new Mushroom(10 + x * 20, 10 + y * 20);
+										break;
+									}
+									case "Slick": {
+										stu = new Slick(10 + x * 20, 10 + y * 20);
 										break;
 									}
 									case "Pipe": { break;}
