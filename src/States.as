@@ -6,8 +6,8 @@ package
 	 */
 	public class States 
 	{
-		public static var power : int = 100,
-							stability:Number,
+		public static var power : Number = 100,
+							stability:Number = 100,
 							money :Number;
 		
 		public function States() 
@@ -25,9 +25,10 @@ package
 		
 		public static function changeStability(x:Number):void {
 			stability += x;
+			trace(stability);
 		}
 		
-		public static function get stability():Number {
+		public static function Stability():Number {
 			return stability;
 		}
 		
@@ -36,10 +37,10 @@ package
 			power = power * 1.5 + 10;
 		}
 		
-		public static function depletePower(toRemove : int):Boolean
+/*		public static function depletePower(toRemove : int):Boolean
 		{
 			return (power = power - toRemove < 0);
-		}
+		}*/
 	}
 
 }

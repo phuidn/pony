@@ -43,9 +43,7 @@ package
 				for each (var e : Enemy in enemies)
 				{
 					if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < 60) {
-						
-					trace("HER");
-							e.health -= damage;		
+						e.health -= damage;		
 					}
 				
 				}

@@ -33,7 +33,7 @@ package
 					building = e;
 				}
 			}
-			path = Grid.findPath(Grid.getPlant(), new Point(Grid.gridX(x), Grid.gridY(y)));
+			path = Grid.findPath(new Point(Grid.gridX(building.x), Grid.gridY(building.y)), new Point(Grid.gridX(x), Grid.gridY(y)));
 
 		}
 		
@@ -51,7 +51,15 @@ package
 					pathelement++;
 				}
 			}else {
-				//explode!!!!!!
+				FP.world.getClass(Structure, building);
+				
+				for each (var e : Structure in building)
+				{
+					if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < 60) {
+						e.remove();		
+					}
+				
+				}
 			}
 			speed = 1;
 			
