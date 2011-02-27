@@ -60,7 +60,7 @@ package
 			buttons[5] = new Button(310, OFFSETY + 10, "Barrel");
 			buttons[6] = new Button(370, OFFSETY + 10, "Wall");
 			buttons[7] = new Button(430, OFFSETY + 10, "Delete");
-			buttons[8] = new Button(700, OFFSETY + 10, "Next");
+			buttons[8] = new Button(600, OFFSETY + 10, "Next");
 			hudDesc = new HudDescription();
 				
 			FP.world.add(buttons[0]);
@@ -234,30 +234,63 @@ package
 							{
 								switch (toPlace)
 								{
-									case "Mushroom": {
-										stu = new Mushroom(10 + x * 20, 10 + y * 20);
+									case "Mushroom":
+									{
+										if (States.depleteMoney(Mushroom.cost))
+										{
+											stu = new Mushroom(10 + x * 20, 10 + y * 20);
+										}
 										break;
 									}
-									case "Slick": {
-										stu = new Slick(10 + x * 20, 10 + y * 20);
+									case "Slick":
+									{
+										if (States.depleteMoney(Slick.cost))
+										{
+											stu = new Slick(10 + x * 20, 10 + y * 20);
+										}
 										break;
 									}
-									case "Barrel": { 
-										stu = new Barrel(10 + x * 20, 10 + y * 20);
+									case "Barrel":
+									{
+										if (States.depleteMoney(Barrel.cost))
+										{ 
+											stu = new Barrel(10 + x * 20, 10 + y * 20);
+										}
 										break; 
 									}
-									case "Crack": { 
-										stu = new Crack(10 + x * 20, 10 + y * 20);
+									case "Crack": 
+									{ 
+										
+										if (States.depleteMoney(Crack.cost))
+										{
+											stu = new Crack(10 + x * 20, 10 + y * 20);
+										}
 										break; 
 										}
-									case "Long": {
-										stu = new Longshroom(10 + x * 20, 10 + y * 20);
+									case "Long":
+									{
+										if (States.depleteMoney(Longshroom.cost))
+										{
+											stu = new Longshroom(10 + x * 20, 10 + y * 20);
+										}
 										break;
 									}
-									case "Explode": {
-										stu = new Splodeshroom(10 + x * 20, 10 + y * 20);
+									case "Explode":
+									{
+										if (States.depleteMoney(Splodeshroom.cost))
+										{
+											stu = new Splodeshroom(10 + x * 20, 10 + y * 20);
+										}
 										break;
 									}
+									case "Wall":
+									{										
+										if (States.depleteMoney(5))
+										{
+											stu = new Structure(10 + x * 20, 10 + y * 20);
+										}
+									}
+
 									
 								}
 								if (stu)

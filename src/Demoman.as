@@ -27,6 +27,12 @@ package
 			graphic = sprite2;
 			type = "enemy";
 			setHitbox(20, 20);
+
+			sprite2.play("up");
+		}
+		
+		private function findPath():void
+		{
 			var disTo : Number = 10000;
 			FP.world.getClass(Structure, structs);
 			for each (var e : Structure in structs)
@@ -40,7 +46,6 @@ package
 				path = Grid.findPath(new Point(Grid.gridX(building.x), Grid.gridY(building.y)), new Point(Grid.gridX(x), Grid.gridY(y)));
 			else 
 				path = [];
-			sprite2.play("up");
 		}
 		
 		public override function update() : void
@@ -63,13 +68,20 @@ package
 				}
 			}else {
 				FP.world.getClass(Structure, structs);
-				
+				var i:int = 0;
 				for each (var e : Structure in structs)
 				{
 					if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < 30 && e.GetType() != Structure.SPAWNPOINT && e.GetType() != Structure.PLANT ) {
-						e.remove();		
-						trace("UIHBIUBIBIBNINUIO");
+						trace(e);
+
+						e.remove();
+						i++;
 					}
+				}
+				if (i == 0 ) {
+					findPath();
+					return;
+					
 				}
 				Wavemanager.enemyDeath();
 				FP.world.remove(this);

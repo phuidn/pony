@@ -17,7 +17,7 @@ package
 						slowing : Number, // The number to divide the speed of the unit on walking in the slick
 						powerUsage : int;
 					
-		public static const cost : Number = 10;
+		public static const cost : Number = 15;
 		public static const description : String = "Unstability has damaged\nthe floor. Be careful  \nwhen walking on this.";
 		
 		public function Crack(x:int, y:int,sprite:Image = null) 

@@ -19,7 +19,7 @@ package
 					powerUsage : int = 1, // The power usage of the unit
 					mushroomType :String = "Normal";
 					
-		public static const cost : Number = 10;
+		public static const cost : Number = 30;
 		public static const description : String = "An interesting case of \nradiation causing local\nfolora and fauna to    \nattack. A short ranged \nattack.";
 		
 		private var loadTime : int = 30,
