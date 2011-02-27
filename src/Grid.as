@@ -48,12 +48,13 @@ package
 		public static function free(x:int, y:int):Boolean 
 		{
 			var s : Structure = grid[x][y] as Structure;
-			if (!s) return false;
+			if (!s) return true;
 			if (s.GetType() == Structure.SLICK)
-				return false;
-			return true;
+				return true;
+			return false;
 		}
-				
+			
+			
 		public static function at(x:int, y:int):Structure 
 		{
 			return grid[x][y];
