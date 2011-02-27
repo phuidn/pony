@@ -22,12 +22,13 @@ package
 		private var sprite : Image = new Image(GRID);
 		
 		private var placing : int = NOTHING;
-		
+		private var clicked: Button;
 		private var toPlace : String;
 		private var buttons : Array = new Array();
 		private var ran : Boolean = true;
 		private const OFFSETX : int = 660;
 		private const OFFSETY : int = 500;
+		private var hudDesc : HudDescription;
 		
 		private var stability : Text = new Text("100", 670, 50, 130);
 		private var money : Text = new Text("100", 670, 90, 130);
@@ -50,29 +51,33 @@ package
 		
 		public override function added():void
 		{
-				buttons[0] = new Button(10, OFFSETY + 10, "Mushroom");
-				buttons[1] = new Button(40, OFFSETY + 10, "Delete");
-				buttons[2] = new Button(70, OFFSETY + 10, "Next");
-				buttons[3] = new Button(100, OFFSETY + 10, "Slick");
-				buttons[4] = new Button(130, OFFSETY + 10, "Long");
-				buttons[5] = new Button(160, OFFSETY + 10, "Explode");
-				buttons[6] = new Button(190, OFFSETY + 10, "Crack");
-				buttons[7] = new Button(220, OFFSETY + 10, "Barrel");
-				buttons[8] = new Button(250, OFFSETY + 10, "Wall");
+
+			buttons[0] = new Button(10, OFFSETY + 10, "Mushroom");
+			buttons[1] = new Button(70, OFFSETY + 10, "Slick");
+			buttons[2] = new Button(130, OFFSETY + 10, "Long");
+			buttons[3] = new Button(190, OFFSETY + 10, "Explode");
+			buttons[4] = new Button(250, OFFSETY + 10, "Crack");
+			buttons[5] = new Button(310, OFFSETY + 10, "Barrel");
+			buttons[6] = new Button(370, OFFSETY + 10, "Wall");
+			buttons[7] = new Button(430, OFFSETY + 10, "Delete");
+			buttons[8] = new Button(700, OFFSETY + 10, "Next");
+			hudDesc = new HudDescription();
 				
-				FP.world.add(buttons[0]);
-				FP.world.add(buttons[1]);
-				FP.world.add(buttons[2]);
-				FP.world.add(buttons[3]);
-				FP.world.add(buttons[4]);
-				FP.world.add(buttons[5]);
-				FP.world.add(buttons[6]);
-				FP.world.add(buttons[7]);
-				FP.world.add(buttons[8]);
+			FP.world.add(buttons[0]);
+			FP.world.add(buttons[1]);
+			FP.world.add(buttons[2]);
+			FP.world.add(buttons[3]);
+			FP.world.add(buttons[4]);
+			FP.world.add(buttons[5]);
+			FP.world.add(buttons[6]);
+			FP.world.add(buttons[7]);
+			FP.world.add(buttons[8]);
+			FP.world.add(hudDesc);
 		}
 		
 		public override function update():void 
 		{
+			trace(placing);
 			if (Input.mouseReleased)
 			{
 				if (placing == NOTHING)
@@ -80,6 +85,10 @@ package
 					for each (var button : Button in buttons)
 					{
 						var open : String = button.checkClick(world.mouseX, world.mouseY)
+						if (open) {
+							clicked = button;
+							clicked.clicked();
+						}
 						switch(open)
 						{
 							case "Delete":{
@@ -93,7 +102,8 @@ package
 							case"Slick":
 							case"Explode":
 							case"Long":
-							case "Wall":{
+							case "Wall": {
+								hudDesc.SelectType(open);
 								placing = PLACING;
 								toPlace = open;
 								break;
@@ -120,7 +130,6 @@ package
 							if (Grid.free(x, y)) 
 							{
 								var stu:Structure;
-								var trap:Slick;
 								switch (toPlace)
 								{
 									case "Mushroom":
@@ -183,11 +192,10 @@ package
 								}
 								if (stu)
 								{
-								//	if (Grid.at(x, y))
-								//		Grid.at(x, y).removed();
 									Grid.occupy(x, y, stu);
 									for each (var s : SpawnPoint in Grid.getSpawn)
-									{
+									{	
+
 										var a : Array;
 										if (!(a = s.findpath()))
 										{
@@ -198,16 +206,14 @@ package
 										}
 									}
 									FP.world.add(stu);
-								}
-								if (trap)
-								{
-									world.add(trap);
+									trace(Grid.at(x, y));
 								}
 							}
 						}
 						else
 						{
-							placing = NOTHING;							
+							placing = NOTHING;	
+							clicked.unclick();						
 						}
 					}else {
 						x = Grid.gridX(world.mouseX);
@@ -252,17 +258,13 @@ package
 										if (!(a = s.findpath()))
 										{
 											placing = 0;
-											
 											Grid.occupy(x, y,null);
 											return;
 										}
 									}
 									FP.world.add(stu);
 								}
-								if (trap)
-								{
-									world.add(trap);
-								}
+
 								
 							}
 							
@@ -270,7 +272,8 @@ package
 						}
 						else
 						{
-							placing = NOTHING;							
+							placing = NOTHING;	
+							clicked.unclick();
 						}
 					}
 				}
@@ -297,6 +300,7 @@ package
 					else
 					{
 						placing = NOTHING;
+						clicked.unclick();
 					}
 				}
 			}
