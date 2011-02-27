@@ -9,6 +9,7 @@ package
 	public class Slick extends Structure 
 	{
 		protected var slickType :String = "Normal";
+
 		
 		[Embed(source = 'assets/slick.png')] private const SLICKPIC: Class;
 		

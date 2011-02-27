@@ -55,17 +55,20 @@ package
 				var moveY : Number = path[pathelement + 1].y - path[pathelement].y;
 				this.x += moveX * speed;
 				this.y += moveY * speed;
-				if ((Grid.gridX(this.x) == path[pathelement + 1].x) && (Grid.gridY(y) == path[pathelement + 1].y))
+				if ((Grid.gridX(this.x+19) == path[pathelement + 1].x) && (Grid.gridY(this.y+19) == path[pathelement + 1].y))
 				{
+					trace(pathelement);
 					pathelement++;
 				}
 			}
 			speed = 1;
+			/*
 			if (health < 1)
 			{
 				world.remove(this);
 				Wavemanager.enemyDeath();
-			}			
+			}
+			*/
 		}
 		
 	}

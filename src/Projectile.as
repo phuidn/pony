@@ -44,10 +44,10 @@ package
 		
 		public override function update(): void
 		{
-			var e: Enemy;
+			var e: Enemy = collide("enemy", x, y) as Enemy;
 			x += velocity.x * speed;
 			y += velocity.y * speed;
-			if (e = collide("enemy", x, y) as Enemy)
+			if (e)
 			{
 				e.health -= damage;
 				world.remove(this);

@@ -112,6 +112,7 @@ package
 										if (!(a = s.findpath()))
 										{
 											placing = 0;
+											
 											Grid.occupy(x, y,null);
 											return;
 										}
@@ -142,9 +143,9 @@ package
 								{
 									FP.world.remove(Grid.at(x, y));
 									Grid.occupy(x, y, null);
-									for each (var s : SpawnPoint in Grid.getSpawn)
+									for each (var sp : SpawnPoint in Grid.getSpawn)
 									{
-										s.findpath();
+										sp.findpath();
 									}
 								}
 							}
