@@ -15,7 +15,7 @@ package
 		public var	health : int = 20;
 		private var sprite : Image = new Image(ENEMY),
 					path :Array,
-					pathelement : int= 0;
+					pathelement : int = 0;
 
 		public function Enemy(x : int, y : int, path : Array) 
 		{
