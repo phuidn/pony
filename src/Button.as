@@ -21,12 +21,14 @@ package
 		
 		[Embed(source = 'assets/button.png')] private const BUTTON: Class;
 		[Embed(source='assets/big/greenmushBIG.png')] private const GREENMUSHROOM: Class;		
+		[Embed(source='assets/big/bluemushBIG.png')] private const BLUEMUSHROOM: Class;		
 		[Embed(source='assets/big/redmushBIG.png')] private const REDMUSHROOM: Class;		
 		[Embed(source = 'assets/Delete.png')] private const img: Class;
 		[Embed(source = 'assets/next.png')] private const NEXT: Class;
 		[Embed(source='assets/big/crackBIG.png')] private const CRACK: Class;
 		[Embed(source='assets/big/barrelBIG.png')] private const BARREL: Class;
 		[Embed(source='assets/wall.png')] private const WALL: Class;
+		[Embed(source='assets/big/slickBIG.png')] private const SLICK: Class;
 
 	
 		private var sm:Spritemap = new Spritemap(BUTTON, 40, 40);			
@@ -73,12 +75,17 @@ package
 				}
 				case "Long":
 				{
-					sprite = new Image(REDMUSHROOM);
+					sprite = new Image(BLUEMUSHROOM);
 					break;
 				}
 				case "Wall":
 				{
 					sprite = new Image(WALL);
+					break;
+				}
+				case "Slick":
+				{
+					sprite = new Image(SLICK);
 					break;
 				}
 				default: {
