@@ -9,8 +9,14 @@ package
 	 * @author David
 	 */
 	public class HudDescription extends Entity
-	{		
+	{
 		[Embed(source = 'assets/big/barrelBIG.png')] private const BARREL: Class;
+		[Embed(source = 'assets/big/bluemushBIG.png')] private const BLUEMUSH: Class;
+		[Embed(source = 'assets/big/crackBIG.png')] private const CRACK: Class;
+		[Embed(source = 'assets/big/redmushBIG.png')] private const REDMUSH: Class;
+		[Embed(source = 'assets/big/greenmushBIG.png')] private const GREENMUSH: Class;
+		[Embed(source = 'assets/big/wallBIG.png')] private const WALL: Class;
+		[Embed(source = 'assets/big/slickBIG.png')] private const SLICK: Class;		
 		[Embed(source = 'assets/big/blank.png')] private const UNSELECTED: Class;
 		
 		protected var disImg : Image = new Image(UNSELECTED);
@@ -47,8 +53,8 @@ package
 				{
 					disImg = new Image(BARREL);
 					
-					costText.text = "Cost: " + Barrel.cost.toString();					
-					disText.text = Barrel.description;
+					costText.text = "Cost: " + Mushroom.cost.toString();					
+					disText.text = Mushroom.description;
 					break;
 				}
 				case"Crack":
