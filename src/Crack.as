@@ -11,7 +11,7 @@ package
 		protected var slickType :String = "Normal";
 
 		
-		[Embed(source = 'assets/crackbutton.png')] private const CRACK: Class;
+		[Embed(source = 'assets/crack.png')] private const CRACK: Class;
 		
 		protected var 	damage :Number, // The damage the slick causes to enemies walking on it
 						slowing : Number, // The number to divide the speed of the unit on walking in the slick
