@@ -37,6 +37,7 @@ package
 		
 		public override function update() : void
 		{
+			layer = - y;
 			var disTo : Number;
 			var tempDis : Number;
 			disTo = rangeSq;

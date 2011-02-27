@@ -22,14 +22,24 @@ package
 			super(x, y, path);
 			health = 60;
 			speed = 0.5;
-			this.x = x;
-			this.y = y;
 			graphic = sprite2;
 			sprite2.play("up");
 		}
 		
 		public override function update() : void
 		{
+			var e :Slick = collide("slick", x, y) as Slick;
+			if (e)
+			{
+				health -= e.dam;
+			}
+
+			var d :Crack = collide("crack", x, y) as Crack;
+			if (d)
+			{
+				trace("UIB");
+				speed = 0.25;
+			}
 
 			if (pathelement < path.length - 1)
 			{
@@ -37,13 +47,15 @@ package
 				var moveY : Number = path[pathelement + 1].y - path[pathelement].y;
 				this.x += moveX * speed;
 				this.y += moveY * speed;
+				count += Math.abs(moveX * speed) + Math.abs(moveY * speed);
+
 				if (moveX>0) sprite2.play("right");
 				if (moveX<0) sprite2.play("left");
 				if (moveY<0) sprite2.play("up");
 				if (moveY>0) sprite2.play("down");
-				if ((Grid.gridX(this.x+19) == path[pathelement + 1].x) && (Grid.gridY(this.y+19) == path[pathelement + 1].y))
-				{
+				if (count >= 20) {
 					pathelement++;
+					count = 0;
 				}
 			}
 			speed = 0.5;
