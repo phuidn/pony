@@ -16,27 +16,24 @@ package
 		public static const NOTHING : int = 0;
 		
 		protected var sprite : Image;
-		[Embed(source = 'assets/enemy.png')] private const ENEMY: Class;
+		[Embed(source='assets/wall.png')] private const ENEMY: Class;
 		
 		protected var strucType : int = NOTHING;
 		
 		public function Structure(x:int, y:int, sprite:Image = null)
 		{
-			layer = 2;
+			layer = -y;
 			if (sprite)
 				this.sprite = sprite;
 			else 
 				this.sprite = new Image(ENEMY);
 			super(x, y, this.sprite);
+			this.sprite.y = -20;
 		}
 		
 		public function GetType():int 
 		{
 			return strucType;
-		}
-		public override function update() : void
-		{
-		
 		}
 		
 		public function remove ():void 

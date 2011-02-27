@@ -11,14 +11,15 @@ package
 		protected var slickType :String = "Normal";
 
 		
-		[Embed(source = 'assets/crackbutton.png')] private const CRACK: Class;
+		[Embed(source = 'assets/crack.png')] private const CRACK: Class;
 		
 		protected var 	damage :Number, // The damage the slick causes to enemies walking on it
 						slowing : Number, // The number to divide the speed of the unit on walking in the slick
 						powerUsage : int;
 					
 		public static const cost : Number = 10;
-			
+		public static const description : String = "Unstability has damaged\nthe floor. Be careful  \nwhen walking on this.";
+		
 		public function Crack(x:int, y:int,sprite:Image = null) 
 		{
 			setHitbox(20, 20);

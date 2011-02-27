@@ -119,7 +119,7 @@ package
 				
 				}
 				else if (placing == PLACING)
-				{
+				{					
 					if (!Wavemanager.withInWave())
 					{
 						var x:Number = Grid.gridX(world.mouseX);
@@ -212,6 +212,7 @@ package
 						}
 						else
 						{
+							hudDesc.SelectType();
 							placing = NOTHING;	
 							clicked.unclick();						
 						}
