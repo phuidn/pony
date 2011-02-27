@@ -43,7 +43,15 @@ package
 		
 /*		public static function depletePower(toRemove : int):Boolean
 		{
-			return (power = power - toRemove < 0);
+			if (power >= toRemove)
+			{
+				power -= toRemove;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}*/
 	}
 
