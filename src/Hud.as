@@ -80,6 +80,10 @@ package
 					for each (var button : Button in buttons)
 					{
 						var open : String = button.checkClick(world.mouseX, world.mouseY)
+						if (open) {
+							clicked = button;
+							clicked.clicked();
+						}
 						switch(open)
 						{
 							case "Delete":{
@@ -105,8 +109,6 @@ package
 							}
 							default: {	break; }
 						}
-						clicked = button;
-						clicked.clicked();
 					}
 				
 				}

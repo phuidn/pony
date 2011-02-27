@@ -19,7 +19,7 @@ package
 		heightY : int,
 		widthX : int;
 		
-		[Embed(source = 'assets/enemy.png')] private const BUTTON: Class;
+		[Embed(source = 'assets/button.png')] private const BUTTON: Class;
 		[Embed(source = 'assets/greenMushroom.png')] private const GREENMUSHROOM: Class;		
 		[Embed(source = 'assets/Delete.png')] private const img: Class;
 		[Embed(source = 'assets/next.png')] private const NEXT: Class;
@@ -72,7 +72,7 @@ package
 					break;
 				}
 				default: {
-					sprite = new Image(BUTTON);
+					sprite = new Image(CRACK);
 					break;
 				}
 			}
