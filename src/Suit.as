@@ -20,7 +20,7 @@ package
 			sprite2.add("left",[2]);
 			sprite2.add("right",[3]);
 			super(x, y, path);
-			health = 60;
+			health = Wavemanager.getWaveHealth() * 3;
 			speed = 0.5;
 			graphic = sprite2;
 			sprite2.play("up");
@@ -56,6 +56,12 @@ package
 				if (count >= 20) {
 					pathelement++;
 					count = 0;
+				}
+			}else {
+				hitcount++;
+				if (hitcount > 100) {
+					States.changeStability( -5);
+					hitcount = 0;
 				}
 			}
 			speed = 0.5;

@@ -10,7 +10,7 @@ package
 	public class Projectile extends Entity
 	{
 		[Embed(source = 'assets/blob.png')] private const BLOB: Class;
-		private var speed : Number = 6,
+		private var speed : Number = 9,
 					sprite : Image,
 					velocity : Point,
 					damage : int,

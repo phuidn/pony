@@ -13,7 +13,7 @@ package
 	{
 		[Embed(source = 'assets/scientist.png')] private const ENEMY: Class;
 		public var speed : Number = 1;
-		public var	health : Number = 20;
+		public var	health : Number;
 		protected var path :Array,
 					pathelement : int = 0,
 					sprite:Spritemap = new Spritemap(ENEMY, 20, 40),
@@ -28,6 +28,7 @@ package
 			sprite.add("left",[2]);
 			sprite.add("right",[3]);
 			layer = 1;
+			health = Wavemanager.getWaveHealth();
 			super(x, y-20, sprite);		
 			var plant : Point = Grid.getPlant();
 			this.path = path;

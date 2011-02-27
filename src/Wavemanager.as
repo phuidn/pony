@@ -12,7 +12,7 @@ package
 							wavepop : int = 10,
 							alive : int,
 							wave : Array,
-							engineerRatio : Number = 1,
+							engineerRatio : Number = 5,
 							demolitionRatio : Number = 0,
 							suitRatio : Number = 0,
 							inWave : Boolean = false;
@@ -26,17 +26,22 @@ package
 			
 			if (waveNo % 2 == 0)
 			{
-				demolitionRatio = 6;
+				demolitionRatio = 3;
 			}
-			else if (waveNo > 0)
+			else if (waveNo > 1)
 			{
-				demolitionRatio = 1 /*- 1 / (waveNo - 2)*/;
+				suitRatio = 1 - 1 / (waveNo - 2);
 				
-				if (waveNo > 0)
+				if (waveNo > 3)
 				{
-					suitRatio = 1 /*- 1 / (waveNo - 7)*/;
+					demolitionRatio = 1 - 1 / (waveNo - 7);
 				}
 			}			
+		}
+		
+		public static function getWaveHealth():int
+		{
+			return 10 + waveNo * 10;
 		}
 		
 		public static function nextType():int 
@@ -72,7 +77,7 @@ package
 		public static function enemyDeath():void 
 		{
 			alive--;
-			trace(wavepop, alive);
+			States.increaseMoney();
 			if (wavepop <= 0 && alive == 0)
 			{
 				endWave();

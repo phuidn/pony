@@ -9,16 +9,14 @@ package
 	public class States 
 	{
 		public static var	stability:Number = 100,
-							money : Number = 1000,
+							money : Number = 100,
 							score : Number = 0;
+							
+		private static var reward : Number = 15;
 		
 		public function States() 
 		{
 			
-		}
-		
-		public static function changeMoney(x:Number):void {
-			money += x;
 		}
 		
 		public static function enoghMoney(x:Number):Boolean {
@@ -36,10 +34,10 @@ package
 			return stability;
 		}
 		
-		public static function increaseMoney(toAdd : int):void
+		public static function increaseMoney():void
 		{
-			money += toAdd;
-			score += toAdd;
+			money += reward;
+			score += reward;
 		}
 		
 		public static function depleteMoney(toRemove : int):Boolean
