@@ -16,7 +16,8 @@ package
 		[Embed(source = 'assets/big/redmushBIG.png')] private const REDMUSH: Class;
 		[Embed(source = 'assets/big/greenmushBIG.png')] private const GREENMUSH: Class;
 		[Embed(source = 'assets/big/wallBIG.png')] private const WALL: Class;
-		[Embed(source = 'assets/big/slickBIG.png')] private const SLICK: Class;		
+		[Embed(source = 'assets/big/slickBIG.png')] private const SLICK: Class;
+		[Embed(source = 'assets/Delete.png')] private const DELETE: Class;		
 		[Embed(source = 'assets/big/blank.png')] private const UNSELECTED: Class;
 		
 		protected var disImg : Image = new Image(UNSELECTED);
@@ -97,6 +98,14 @@ package
 					costText.text = "Cost: " + 5;
 					disText.text = "An unstable roof has   \ncolapsed causing a wall\nto block the path.";
 					break;
+				}
+				case "Delete":
+				{
+					((graphic as Graphiclist).children)[0] = new Image(DELETE);
+					
+					costText.text = "Cost: 0";
+					disText.text = "Deletes the structures \nselected.";
+					break;					
 				}
 				case "Pipe" : { break; }
 				case "":

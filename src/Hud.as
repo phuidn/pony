@@ -18,7 +18,7 @@ package
 		private const PLACING : int = 1;
 		private const DELETING : int = 2;
 		
-		[Embed(source = 'assets/grid.png')] private const GRID: Class;
+		[Embed(source = 'assets/background.png')] private const GRID: Class;
 		private var sprite : Image = new Image(GRID);
 		
 		private var placing : int = NOTHING;
@@ -91,6 +91,7 @@ package
 						switch(open)
 						{
 							case "Delete":{
+								hudDesc.SelectType(open);
 								placing = DELETING;
 								break;
 							}
@@ -273,6 +274,7 @@ package
 						}
 						else
 						{
+							hudDesc.SelectType();
 							placing = NOTHING;	
 							clicked.unclick();
 						}
@@ -300,6 +302,7 @@ package
 					}
 					else
 					{
+						hudDesc.SelectType();
 						placing = NOTHING;
 						clicked.unclick();
 					}
