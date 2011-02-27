@@ -53,7 +53,19 @@ package
 				return true;
 			return false;
 		}
+		
+		public static function onPath(x:int, y:int):Boolean {
 			
+			for each (var s:SpawnPoint in spawns) {
+				var a:Array = s.getPath;
+				for each (var p:Point in a) {
+					if (p.x == x && p.y == y) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 			
 		public static function at(x:int, y:int):Structure 
 		{

@@ -41,15 +41,16 @@ package
 		
 		public static function nextType():int 
 		{
+			if (wavepop == 0)
+			{
+				return 0;
+			}
 			var a : Number = FP.random;
 			wavepop--;
 			alive++;
 			
-			if (wavepop < 0)
-			{
-				return 0;
-			}
-			else if (a < (engineerRatio / (engineerRatio + demolitionRatio + suitRatio)))
+
+			if (a < (engineerRatio / (engineerRatio + demolitionRatio + suitRatio)))
 			{
 				return 1;
 			}
@@ -71,7 +72,7 @@ package
 		public static function enemyDeath():void 
 		{
 			alive--;
-			
+			trace(wavepop, alive);
 			if (wavepop <= 0 && alive == 0)
 			{
 				inWave = false;

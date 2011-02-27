@@ -48,6 +48,10 @@ package
 				elapsedTime++;
 			}
 		}	
+		
+		public function get getPath():Array {
+			return path;
+		}
 	}
 
 }

@@ -18,18 +18,18 @@ package
 						cost: int, // The power cost of buying the slick
 						powerUsage : int; 
 			
-		public function Slick(x:int, y:int) 
+		public function Slick(x:int, y:int,sprite:Image = null) 
 		{
+			super (x, y,sprite);
 			if (!sprite)
 			{
-				this.sprite = new Image(SLICKPIC);
+				graphic= new Image(SLICKPIC);
 			}
 			strucType = SLICK;
 			damage = 1; // The damage the slick causes to enemies walking on it
 			slowing = 1; // The number to divide the speed of the unit on walking in the slick
 			cost = 10; // The power cost of buying the slick
 			powerUsage= 1; 
-			super (x, y, sprite);
 		}
 		
 		public override function update(): void

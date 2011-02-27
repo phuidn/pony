@@ -39,7 +39,6 @@ package
 				this.y += moveY * speed;
 				if ((Grid.gridX(this.x+19) == path[pathelement + 1].x) && (Grid.gridY(this.y+19) == path[pathelement + 1].y))
 				{
-					trace(pathelement);
 					pathelement++;
 				}
 			}
