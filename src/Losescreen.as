@@ -10,9 +10,9 @@ package
 	public class Losescreen extends World 
 	{
 		
-		public function Losescreen() 
+		public function Losescreen(score:Number) 
 		{
-			addGraphic(new Text("LOSE", 100, 100, 100, 100));
+			addGraphic(new Text("LOSE \n " +score.toString(), 100, 100, 100, 100));
 		}
 		
 	}

@@ -9,7 +9,7 @@ package
 	public class States 
 	{
 		public static var	stability:Number = 100,
-							money : Number = 100,
+							money : Number = 1000,
 							score : Number = 0;
 		
 		public function States() 
@@ -28,7 +28,7 @@ package
 		public static function changeStability(x:Number):void {
 			stability += x;
 			if (stability < 0) {
-				FP.world = new Losescreen();
+				FP.world = new Losescreen(score);
 			}
 		}
 		

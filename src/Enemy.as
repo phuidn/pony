@@ -31,9 +31,8 @@ package
 			super(x, y-20, sprite);		
 			var plant : Point = Grid.getPlant();
 			this.path = path;
-			sprite.originY = -20;
 			type = "enemy";
-			setHitbox(20, 20);
+			setHitbox(20, 20,0,-20);
 			sprite.play("up");
 		}
 		

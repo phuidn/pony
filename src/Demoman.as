@@ -29,6 +29,7 @@ package
 			setHitbox(20, 20);
 
 			sprite2.play("up");
+			sprite2.y = -20;
 		}
 		
 		private function findPath():void

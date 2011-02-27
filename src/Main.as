@@ -19,7 +19,7 @@ package
 			var gWorld:GameWorld = new GameWorld();
 			FP.world = gWorld;
 			gWorld.init();
-		//	FP.console.enable();
+			FP.console.enable();
 		}
 	}
 	
