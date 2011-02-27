@@ -74,8 +74,15 @@ package
 			
 			if (wavepop <= 0 && alive == 0)
 			{
-				inWave = false;
+				endWave();
 			}
+		}
+		
+		public static function endWave():void
+		{
+			inWave = false;
+			
+			States.increasePower();
 		}
 	}
 }
