@@ -27,7 +27,7 @@ package
 		[Embed(source = 'assets/next.png')] private const NEXT: Class;
 		[Embed(source='assets/big/crackBIG.png')] private const CRACK: Class;
 		[Embed(source='assets/big/barrelBIG.png')] private const BARREL: Class;
-		[Embed(source='assets/wall.png')] private const WALL: Class;
+		[Embed(source='assets/big/wallBIG.png')] private const WALL: Class;
 		[Embed(source='assets/big/slickBIG.png')] private const SLICK: Class;
 
 	

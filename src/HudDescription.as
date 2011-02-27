@@ -14,6 +14,7 @@ package
 		[Embed(source = 'assets/big/blank.png')] private const UNSELECTED: Class;
 		
 		protected var disImg : Image = new Image(UNSELECTED);
+		protected var disImg2 : Image = new Image(BARREL);
 		protected var disText : Text = new Text("Nothing Selected",-20,105,140,70);
 		protected var costText : Text = new Text("Cost: N/A",-20,85);
 		
@@ -37,7 +38,7 @@ package
 			{
 				case "Barrel":
 				{
-					disImg = new Image(BARREL);
+					((graphic as Graphiclist).children)[0] = new Image(BARREL);
 					
 					costText.text = "Cost: " + Barrel.cost.toString();					
 					disText.text = Barrel.description;

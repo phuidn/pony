@@ -11,7 +11,7 @@ package
 	 */
 	public class Longshroom extends Structure 
 	{
-				
+		[Embed(source = 'assets/bluemushroom.png')] private const BLUE:Class;		
 		//[Embed(source = 'assets/XML/Mushrooms.xml', mimeType = "application/octet-stream")] private const MUSHROOMS: Class;
 		private var damage :int = 5, // The damage the slick causes to enemies walking on it
 					slowing :int = 1, // The number to divide the speed of the unit on walking in the slick
@@ -29,8 +29,10 @@ package
 		public function Longshroom(x: Number, y:Number) 
 		{
 			//LoadData(this.mushroomType);
-			//sprite = new Image(GREEN_MUSHROOM);
+			sprite = new Image(BLUE);
 			super(x, y, sprite);
+			setHitbox(20, 20);
+			sprite.y = 0;
 		}
 		
 		public override function update() : void
