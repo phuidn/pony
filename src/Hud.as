@@ -111,6 +111,8 @@ package
 								}
 								if (stu)
 								{
+								//	if (Grid.at(x, y))
+								//		Grid.at(x, y).removed();
 									Grid.occupy(x, y, stu);
 									for each (var s : SpawnPoint in Grid.getSpawn)
 									{

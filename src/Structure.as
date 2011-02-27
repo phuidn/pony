@@ -2,7 +2,7 @@ package
 {
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
-	
+	import net.flashpunk.FP;
 	/**
 	 * ...
 	 * @author Rob
@@ -37,6 +37,11 @@ package
 		public override function update() : void
 		{
 		
+		}
+		
+		public function remove ():void 
+		{
+			FP.world.remove(this);
 		}
 		
 	}
