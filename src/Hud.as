@@ -92,6 +92,7 @@ package
 						switch(open)
 						{
 							case "Delete":{
+								hudDesc.SelectType(open);
 								placing = DELETING;
 								break;
 							}
@@ -273,6 +274,7 @@ package
 						}
 						else
 						{
+							hudDesc.SelectType();
 							placing = NOTHING;	
 							clicked.unclick();
 						}
@@ -300,6 +302,7 @@ package
 					}
 					else
 					{
+						hudDesc.SelectType();
 						placing = NOTHING;
 						clicked.unclick();
 					}
