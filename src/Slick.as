@@ -34,16 +34,9 @@ package
 			powerUsage= 1; 
 		}
 		
-		public override function update(): void
-		{
-			var e :Enemy = collide("enemy", x, y) as Enemy;
-			if (e)
-			{
-				e.health -= damage;
-				e.speed *= slowing;
-			}
+		public function get dam():Number {
+			return damage;
 		}
-		
 	}
 
 }
