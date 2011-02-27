@@ -34,6 +34,7 @@ package
 			//LoadData(this.mushroomType);
 			sprite = new Image(GREEN_MUSHROOM);
 			super(x, y, sprite);
+			setHitbox(20, 20);
 		}
 		
 		public override function update() : void
