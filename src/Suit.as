@@ -59,13 +59,13 @@ package
 				}
 			}
 			speed = 0.5;
+			layer = -y;
 			
 			if (health < 1)
 			{
 				world.remove(this);
 				Wavemanager.enemyDeath();
 			}
-			layer = -y;
 		}
 		
 	}

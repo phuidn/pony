@@ -73,6 +73,7 @@ package
 		
 		public override function update():void 
 		{
+			trace(placing);
 			if (Input.mouseReleased)
 			{
 				if (placing == NOTHING)
@@ -124,7 +125,6 @@ package
 							if (Grid.free(x, y)) 
 							{
 								var stu:Structure;
-								var trap:Slick;
 								switch (toPlace)
 								{
 									case "Mushroom":
@@ -187,11 +187,10 @@ package
 								}
 								if (stu)
 								{
-								//	if (Grid.at(x, y))
-								//		Grid.at(x, y).removed();
 									Grid.occupy(x, y, stu);
 									for each (var s : SpawnPoint in Grid.getSpawn)
-									{
+									{	
+
 										var a : Array;
 										if (!(a = s.findpath()))
 										{
@@ -202,10 +201,7 @@ package
 										}
 									}
 									FP.world.add(stu);
-								}
-								if (trap)
-								{
-									world.add(trap);
+									trace(Grid.at(x, y));
 								}
 							}
 						}
@@ -257,17 +253,13 @@ package
 										if (!(a = s.findpath()))
 										{
 											placing = 0;
-											
 											Grid.occupy(x, y,null);
 											return;
 										}
 									}
 									FP.world.add(stu);
 								}
-								if (trap)
-								{
-									world.add(trap);
-								}
+
 								
 							}
 							

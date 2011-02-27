@@ -20,12 +20,12 @@ package
 		widthX : int;
 		
 		[Embed(source = 'assets/button.png')] private const BUTTON: Class;
-		[Embed(source = 'assets/greenMushroom.png')] private const GREENMUSHROOM: Class;		
+		[Embed(source='assets/big/greenmushBIG.png')] private const GREENMUSHROOM: Class;		
+		[Embed(source='assets/big/redmushBIG.png')] private const REDMUSHROOM: Class;		
 		[Embed(source = 'assets/Delete.png')] private const img: Class;
 		[Embed(source = 'assets/next.png')] private const NEXT: Class;
 		[Embed(source = 'assets/crackbutton.png')] private const CRACK: Class;
-		[Embed(source = 'assets/red mushroom.png')] private const REDMUSHROOM: Class;;
-		[Embed(source = 'assets/barrel.png')] private const BARREL: Class;
+		[Embed(source='assets/big/barrelBIG.png')] private const BARREL: Class;
 
 	
 		private var sm:Spritemap = new Spritemap(BUTTON, 40, 40);			
@@ -63,10 +63,14 @@ package
 				case "Barrel":
 				{
 					sprite = new Image(BARREL);
-					sprite.y = -20;
 					break;
 				}
 				case "Explode":
+				{
+					sprite = new Image(REDMUSHROOM);
+					break;
+				}
+				case "Long":
 				{
 					sprite = new Image(REDMUSHROOM);
 					break;
@@ -77,6 +81,7 @@ package
 				}
 			}
 			super(posX, posY);
+			sprite.scale = 0.5;
 			(graphic as Graphiclist).add(sprite);
 			sm.play("not clicked");
 		}

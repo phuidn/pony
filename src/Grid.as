@@ -49,7 +49,7 @@ package
 		{
 			var s : Structure = grid[x][y] as Structure;
 			if (!s) return true;
-			if (s)
+			if (s.GetType() == Structure.SLICK)
 				return true;
 			return false;
 		}
