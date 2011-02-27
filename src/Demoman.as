@@ -58,8 +58,9 @@ package
 					if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < 60) {
 						e.remove();		
 					}
-				
 				}
+				FP.world.remove(this);
+				Wavemanager.enemyDeath();
 			}
 			speed = 1;
 			

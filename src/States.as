@@ -4,6 +4,8 @@ package
 	 * ...
 	 * @author David
 	 */
+	import net.flashpunk.FP;
+	
 	public class States 
 	{
 		public static var power : Number = 100,
@@ -25,7 +27,9 @@ package
 		
 		public static function changeStability(x:Number):void {
 			stability += x;
-			trace(stability);
+			if (stability < 0) {
+				FP.world = new Losescreen();
+			}
 		}
 		
 		public static function Stability():Number {

@@ -51,6 +51,7 @@ package
 				buttons[5] = new Button(160, OFFSETY + 10, "Explode");
 				buttons[6] = new Button(190, OFFSETY + 10, "Crack");
 				buttons[7] = new Button(220, OFFSETY + 10, "Barrel");
+				buttons[8] = new Button(250, OFFSETY + 10, "Wall");
 				
 				FP.world.add(buttons[0]);
 				FP.world.add(buttons[1]);
@@ -60,6 +61,7 @@ package
 				FP.world.add(buttons[5]);
 				FP.world.add(buttons[6]);
 				FP.world.add(buttons[7]);
+				FP.world.add(buttons[8]);
 		}
 		
 		public override function update():void 
@@ -83,7 +85,8 @@ package
 							case"Crack":
 							case"Slick":
 							case"Explode":
-							case"Long":{
+							case"Long":
+							case "Wall":{
 								placing = PLACING;
 								toPlace = open;
 								break;
@@ -121,7 +124,6 @@ package
 										stu = new Slick(10 + x * 20, 10 + y * 20);
 										break;
 									}
-									case "Pipe": { break;}
 									case "Barrel": { 
 										stu = new Barrel(10 + x * 20, 10 + y * 20);
 										break; 
@@ -137,6 +139,9 @@ package
 									case "Explode": {
 										stu = new Splodeshroom(10 + x * 20, 10 + y * 20);
 										break;
+									}
+									case "Wall": {
+										stu = new Structure(10 + x * 20, 10 + y * 20);
 									}
 									
 								}
@@ -185,7 +190,6 @@ package
 										stu = new Slick(10 + x * 20, 10 + y * 20);
 										break;
 									}
-									case "Pipe": { break;}
 									case "Barrel": { 
 										stu = new Barrel(10 + x * 20, 10 + y * 20);
 										break; 
