@@ -11,8 +11,7 @@ package
 	 */
 	public class Splodeshroom extends Structure 
 	{
-				
-		//[Embed(source = 'assets/XML/Mushrooms.xml', mimeType = "application/octet-stream")] private const MUSHROOMS: Class;
+		[Embed(source='assets/red mushroom.png')]private const SHROOM: Class;
 		private var damage :int = 5, // The damage the slick causes to enemies walking on it
 					slowing :int = 1, // The number to divide the speed of the unit on walking in the slick
 					cost: int = 10, // The power cost of buying the slick
@@ -30,6 +29,8 @@ package
 			//LoadData(this.mushroomType);
 			//sprite = new Image(GREEN_MUSHROOM);
 			super(x, y, sprite);
+			graphic = new Image(SHROOM);
+			graphic.y = -20;
 		}
 		
 		public override function update() : void

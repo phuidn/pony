@@ -17,7 +17,8 @@ package
 		protected var path :Array,
 					pathelement : int = 0,
 					sprite:Spritemap = new Spritemap(ENEMY, 20, 40),
-					hitcount:int = 0;
+					hitcount:int = 0,
+					count:Number = 0;
 
 		public function Enemy(x : int, y : int, path : Array) 
 		{
@@ -27,7 +28,7 @@ package
 			sprite.add("left",[2]);
 			sprite.add("right",[3]);
 			layer = 1;
-			super(x, y, sprite);		
+			super(x, y-20, sprite);		
 			var plant : Point = Grid.getPlant();
 			this.path = path;
 			sprite.originY = -20;
@@ -45,14 +46,33 @@ package
 				var moveY : Number = path[pathelement + 1].y - path[pathelement].y;
 				this.x += moveX * speed;
 				this.y += moveY * speed;
+				count += Math.abs(moveX * speed) + Math.abs(moveY * speed);
 				if (moveX>0) sprite.play("right");
 				if (moveX<0) sprite.play("left");
 				if (moveY<0) sprite.play("up");
 				if (moveY>0) sprite.play("down");
 
-				if ((Grid.gridX(this.x+19) == path[pathelement + 1].x) && (Grid.gridY(this.y+19) == path[pathelement + 1].y))
+		/*		if (moveX>0 && (Grid.gridX(this.x) == path[pathelement + 1].x) )
+					pathelement++;
+				if (moveX<0 && (Grid.gridX(this.x+19) == path[pathelement + 1].x) )
+					pathelement++;
+				if (moveY<0 && (Grid.gridX(this.y) == path[pathelement + 1].y) )
+					pathelement++;
+				if (moveY>0 && (Grid.gridX(this.y+19) == path[pathelement + 1].y) )
+					pathelement++;
+
+				if ((Grid.gridX(this.x + 15) == path[pathelement + 1].x) && (Grid.gridY(this.y + 15) == path[pathelement + 1].y) &&
+					(Grid.gridX(this.x +5) == path[pathelement + 1].x) && (Grid.gridY(this.y +5) == path[pathelement + 1].y)  &&
+					(Grid.gridX(this.x + 15) == path[pathelement + 1].x) && (Grid.gridY(this.y+5 ) == path[pathelement + 1].y) &&
+					(Grid.gridX(this.x+5) == path[pathelement + 1].x) && (Grid.gridY(this.y+15) == path[pathelement + 1].y))
 				{
 					pathelement++;
+				} */
+				trace(count);
+				if (count >= 20) {
+					trace("UIHIH");
+					pathelement++;
+					count = 0;
 				}
 			}else {
 				hitcount++;
