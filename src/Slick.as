@@ -17,7 +17,9 @@ package
 						slowing : Number, // The number to divide the speed of the unit on walking in the slick
 						powerUsage : int;
 					
-		public static const cost : Number = 10; 
+		public static const cost : Number = 10;
+		public static const description : String = "Someone has spilled    \nradioactive waste on   \nthe floor. This is     \ndamaging to walk on.";
+		
 			
 		public function Slick(x:int, y:int,sprite:Image = null) 
 		{

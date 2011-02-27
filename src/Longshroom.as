@@ -19,6 +19,7 @@ package
 					mushroomType :String= "Normal";
 					
 		public static const cost : Number = 10;
+		public static const description : String = "An interesting case of \nradiation causing local\nfolora and fauna to    \nattack. A long ranged  \nattack.";
 		
 		private var loadTime : int = 100,
 					eTime : int = 0,

@@ -18,7 +18,8 @@ package
 						powerUsage : int;
 					
 		public static const cost : Number = 10;
-			
+		public static const description : String = "Unstability has damaged\nthe floor. Be careful  \nwhen walking on this.";
+		
 		public function Crack(x:int, y:int,sprite:Image = null) 
 		{
 			setHitbox(20, 20);

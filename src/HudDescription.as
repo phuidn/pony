@@ -43,6 +43,55 @@ package
 					disText.text = Barrel.description;
 					break;
 				}
+				case "Mushroom":
+				{
+					disImg = new Image(BARREL);
+					
+					costText.text = "Cost: " + Barrel.cost.toString();					
+					disText.text = Barrel.description;
+					break;
+				}
+				case"Crack":
+				{
+					disImg = new Image(BARREL);
+					
+					costText.text = "Cost: " + Crack.cost.toString();					
+					disText.text = Crack.description;
+					break;
+				}
+				case"Slick":
+				{
+					disImg = new Image(BARREL);
+					
+					costText.text = "Cost: " + Slick.cost.toString();					
+					disText.text = Slick.description;
+					break;
+				}
+				case"Explode":
+				{
+					disImg = new Image(BARREL);
+					
+					costText.text = "Cost: " + Splodeshroom.cost.toString();					
+					disText.text = Splodeshroom.description;
+					break;
+				}
+				case"Long":
+				{
+					disImg = new Image(BARREL);
+					
+					costText.text = "Cost: " + Longshroom.cost.toString();					
+					disText.text = Longshroom.description;
+					break;
+				}
+				case "Wall":
+				{
+					disImg = new Image(BARREL);
+					
+					costText.text = "Cost: " + 5;
+					disText.text = "An unstable roof has   \ncolapsed causing a wall\nto block the path.";
+					break;
+				}
+				case "Pipe" : { break; }
 				default:
 				{
 					disImg = new Image(UNSELECTED);
