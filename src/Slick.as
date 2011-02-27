@@ -6,24 +6,29 @@ package
 	 * ...
 	 * @author David
 	 */
-	public class Slick extends Entity 
+	public class Slick extends Structure 
 	{
-		protected var slickType :String= "Normal";
-		protected var damage :int = 1; // The damage the slick causes to enemies walking on it
-		protected var slowing : int = 1; // The number to divide the speed of the unit on walking in the slick
-		protected var cost: int = 10; // The power cost of buying the slick
-		protected var powerUsage = 1; // The power usage of the unit
+		protected var slickType :String = "Normal";
+
 		
-		[Embed(source = 'assets/slick.png')] private const SLICK: Class;		
-		protected var sprite : Image;
+		[Embed(source = 'assets/slick.png')] private const SLICKPIC: Class;
 		
-		
+		protected var 	damage :int, // The damage the slick causes to enemies walking on it
+						slowing : int, // The number to divide the speed of the unit on walking in the slick
+						cost: int, // The power cost of buying the slick
+						powerUsage : int; 
+			
 		public function Slick(x:int, y:int) 
 		{
 			if (!sprite)
 			{
-				this.sprite = new Image(SLICK);
+				this.sprite = new Image(SLICKPIC);
 			}
+			strucType = SLICK;
+			damage = 1; // The damage the slick causes to enemies walking on it
+			slowing = 1; // The number to divide the speed of the unit on walking in the slick
+			cost = 10; // The power cost of buying the slick
+			powerUsage= 1; 
 			super (x, y, sprite);
 		}
 		

@@ -2,9 +2,11 @@ package
 {
 	import adobe.utils.CustomActions;
 	import net.flashpunk.Entity;
+	import net.flashpunk.graphics.Graphiclist;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.FP;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Text;
 	
 	/**
 	 * ...
@@ -27,11 +29,16 @@ package
 		private const OFFSETX : int = 660;
 		private const OFFSETY : int = 500;
 		
+		private const text : Text;
+		
 		public function Hud() 
 		{
-			layer = 2;
+			layer = 3;
 			FP.screen.color = 0x0000FF;
-			super(0, 0, sprite);
+			graphic = new Graphiclist();
+			(graphic as Graphiclist).add(new Image(GRID));
+			(graphic as Graphiclist).add(new Text("PONY", 670, 10, 130, 30));
+			
 		}
 		
 		public override function added():void
@@ -46,7 +53,7 @@ package
 				FP.world.add(buttons[3]);
 		}
 		
-		override public function update():void 
+		public override function update():void 
 		{
 			if (!Wavemanager.withInWave())
 			{				
@@ -96,15 +103,16 @@ package
 									}
 									case "Pipe": { break;}
 									case "Barrel": { break; }
-									/*
-									case "Crack": {
-										trap = new Crack(10 + x * 20, 10 + y * 20);
+									case "Crack": 
+									{
+										trap = new Slick(10 + x * 20, 10 + y * 20);
 									}
-									*/
 									
 								}
 								if (stu)
 								{
+								//	if (Grid.at(x, y))
+								//		Grid.at(x, y).removed();
 									Grid.occupy(x, y, stu);
 									for each (var s : SpawnPoint in Grid.getSpawn)
 									{
@@ -112,6 +120,7 @@ package
 										if (!(a = s.findpath()))
 										{
 											placing = 0;
+											
 											Grid.occupy(x, y,null);
 											return;
 										}
@@ -142,9 +151,9 @@ package
 								{
 									FP.world.remove(Grid.at(x, y));
 									Grid.occupy(x, y, null);
-									for each (var s : SpawnPoint in Grid.getSpawn)
+									for each (var sp : SpawnPoint in Grid.getSpawn)
 									{
-										s.findpath();
+										sp.findpath();
 									}
 								}
 							}

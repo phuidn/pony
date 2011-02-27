@@ -2,7 +2,7 @@ package
 {
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Image;
-	
+	import net.flashpunk.FP;
 	/**
 	 * ...
 	 * @author Rob
@@ -11,6 +11,8 @@ package
 	{
 		public static const PLANT : int =  1;
 		public static const SPAWNPOINT: int = 2;
+		public static const TOWER: int = 3;
+		public static const SLICK: int = 4;
 		public static const NOTHING : int = 0;
 		
 		protected var sprite : Image;		
@@ -20,6 +22,7 @@ package
 		
 		public function Structure(x:int, y:int, sprite:Image = null)
 		{
+			layer = 2;
 			if (sprite)
 				this.sprite = sprite;
 			else 
@@ -34,6 +37,11 @@ package
 		public override function update() : void
 		{
 		
+		}
+		
+		public function remove ():void 
+		{
+			FP.world.remove(this);
 		}
 		
 	}
