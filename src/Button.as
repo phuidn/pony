@@ -22,6 +22,10 @@ package
 		[Embed(source = 'assets/Delete.png')] private const img: Class;
 		[Embed(source = 'assets/next.png')] private const NEXT: Class;
 		[Embed(source = 'assets/crackbutton.png')] private const CRACK: Class;
+		[Embed(source = 'assets/red mushroom.png')] private const REDMUSHROOM: Class;;
+		[Embed(source = 'assets/barrel.png')] private const BARREL: Class;
+
+				
 		private var sprite : Image = new Image(BUTTON);
 		
 		public function Button(posX : int, posY : int, buttonType : String, height : int = 32, width : int = 32) 
@@ -48,6 +52,17 @@ package
 				}
 				case "Crack":{
 					sprite = new Image(CRACK);
+					break;
+				}
+				case "Barrel":
+				{
+					sprite = new Image(BARREL);
+					sprite.y = -20;
+					break;
+				}
+				case "Explode":
+				{
+					sprite = new Image(REDMUSHROOM);
 					break;
 				}
 				default: {
