@@ -38,7 +38,7 @@ package
 			super(690, 150);
 		}		
 		
-		public function SelectType(selected : String):void 
+		public function SelectType(selected : String = ""):void 
 		{
 			switch (selected)
 			{
@@ -52,7 +52,7 @@ package
 				}
 				case "Mushroom":
 				{
-					disImg = new Image(BARREL);
+					((graphic as Graphiclist).children)[0] = new Image(GREENMUSH);
 					
 					costText.text = "Cost: " + Mushroom.cost.toString();					
 					disText.text = Mushroom.description;
@@ -60,7 +60,7 @@ package
 				}
 				case"Crack":
 				{
-					disImg = new Image(BARREL);
+					((graphic as Graphiclist).children)[0] = new Image(CRACK);
 					
 					costText.text = "Cost: " + Crack.cost.toString();					
 					disText.text = Crack.description;
@@ -68,7 +68,7 @@ package
 				}
 				case"Slick":
 				{
-					disImg = new Image(BARREL);
+					((graphic as Graphiclist).children)[0] = new Image(SLICK);
 					
 					costText.text = "Cost: " + Slick.cost.toString();					
 					disText.text = Slick.description;
@@ -76,7 +76,7 @@ package
 				}
 				case"Explode":
 				{
-					disImg = new Image(BARREL);
+					((graphic as Graphiclist).children)[0] = new Image(REDMUSH);
 					
 					costText.text = "Cost: " + Splodeshroom.cost.toString();					
 					disText.text = Splodeshroom.description;
@@ -84,7 +84,7 @@ package
 				}
 				case"Long":
 				{
-					disImg = new Image(BARREL);
+					((graphic as Graphiclist).children)[0] = new Image(BLUEMUSH);
 					
 					costText.text = "Cost: " + Longshroom.cost.toString();					
 					disText.text = Longshroom.description;
@@ -92,16 +92,17 @@ package
 				}
 				case "Wall":
 				{
-					disImg = new Image(BARREL);
+					((graphic as Graphiclist).children)[0] = new Image(WALL);
 					
 					costText.text = "Cost: " + 5;
 					disText.text = "An unstable roof has   \ncolapsed causing a wall\nto block the path.";
 					break;
 				}
 				case "Pipe" : { break; }
+				case "":
 				default:
 				{
-					disImg = new Image(UNSELECTED);
+					((graphic as Graphiclist).children)[0] = new Image(UNSELECTED);
 					costText.text = "Cost: N/A"					
 					disText.text = "Nothing Selected";
 					break;
