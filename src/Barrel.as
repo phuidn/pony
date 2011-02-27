@@ -33,6 +33,7 @@ package
 			sprite = new Image(BARREL);
 			sprite.y = -20;
 			super(x, y, sprite);
+			layer = -y;
 		}
 		
 		public override function update() : void

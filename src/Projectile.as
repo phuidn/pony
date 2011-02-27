@@ -44,6 +44,7 @@ package
 		
 		public override function update(): void
 		{
+			layer = -y;
 			var e: Enemy = collide("enemy", x, y) as Enemy;
 			x += velocity.x * speed;
 			y += velocity.y * speed;

@@ -54,6 +54,7 @@ package
 			{
 				world.remove(this);
 			}
+			layer = -y;
 		}
 	}
 

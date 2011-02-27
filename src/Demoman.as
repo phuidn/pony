@@ -78,6 +78,7 @@ package
 				world.remove(this);
 				Wavemanager.enemyDeath();
 			}
+			layer = -y;
 			
 		}
 		
