@@ -11,15 +11,18 @@ package
 	public class HudDescription extends Entity
 	{		
 		[Embed(source = 'assets/big/barrelBIG.png')] private const BARREL: Class;
-		[Embed(source = 'assets/big/barrelBIG.png')] private const UNSELECTED: Class;
+		[Embed(source = 'assets/big/blank.png')] private const UNSELECTED: Class;
 		
 		protected var disImg : Image = new Image(UNSELECTED);
-		protected var disText : Text = new Text("Cost: N/A",0,85);
-		protected var costText : Text = new Text("Nothing Selected",0,105,80,70);
+		protected var disText : Text = new Text("Nothing Selected",-20,105,140,70);
+		protected var costText : Text = new Text("Cost: N/A",-20,85);
 		
 		public function HudDescription() 
 		{			
 			graphic  = new Graphiclist;
+			
+			disText.size = 10;
+			costText.size = 10;
 			
 			(graphic as Graphiclist).add(disImg);
 			(graphic as Graphiclist).add(costText);
@@ -38,6 +41,7 @@ package
 					
 					costText.text = "Cost: " + Barrel.cost.toString();					
 					disText.text = Barrel.description;
+					break;
 				}
 				default:
 				{

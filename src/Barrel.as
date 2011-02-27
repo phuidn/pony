@@ -21,7 +21,7 @@ package
 					mushroomType :String= "Barrel";
 					
 		public static const cost : Number = 10;
-		public static const description : String = "A barrel of radioactive substance. \nYou don't want to walk near \nthis.";
+		public static const description : String = "A barrel of radioactive \nsubstance. You don't\nwant to walk near this.";
 		
 		private var loadTime : int = 100,
 					eTime : int = 0,
