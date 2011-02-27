@@ -23,8 +23,12 @@ package
 			Grid.occupy(2, 1,plant);
 			Grid.occupy(1, 2,plant);
 			Grid.occupy(2, 2, plant);
-			add(new SpawnPoint(630, 470));
-			var hud : Hud = new Hud();
+			var spawn:Structure = new SpawnPoint(590, 430);
+			add(spawn);
+			Grid.occupy(30, 22, spawn);
+			Grid.occupy(30, 21, spawn);
+			Grid.occupy(29, 22, spawn);
+ 			var hud : Hud = new Hud();
 			add(hud);
 		}
 	}

@@ -34,6 +34,7 @@ package
 			//LoadData(this.mushroomType);
 			sprite = new Image(GREEN_MUSHROOM);
 			super(x, y, sprite);
+			sprite.y = 0;
 			setHitbox(20, 20);
 			sprite.y = 0;
 		}
