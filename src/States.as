@@ -46,7 +46,7 @@ package
 		{
 			if (money >= toRemove)
 			{
-				//money -= toRemove;
+				money -= toRemove;
 				return true;
 			}
 			else
