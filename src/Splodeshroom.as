@@ -61,6 +61,7 @@ package
 			}
 			eTime++; 
 			enemies = [];
+			layer = -y;
 		}
 		
 
