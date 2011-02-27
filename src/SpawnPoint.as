@@ -34,17 +34,20 @@ package
 				{
 					switch (Wavemanager.nextType())
 					{
-						case 1:
-						case 2: 
+						case 1: 
 						{
-							world.add(new Enemy(x, y, path));
+							//world.add(new Enemy(x, y, path));
+							//break;
+						}
+						case 2:
+						{
+							//world.add(new Suit(x, y, path));
+							//break;
+						}	
+						case 3: {
+							world.add(new Demoman(x, y));
 							break;
 						}
-						case 3:
-						{
-							world.add(new Suit(x, y, path));
-							break;
-						}	
 						default:
 						{
 							break;

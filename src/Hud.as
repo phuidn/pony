@@ -77,7 +77,6 @@ package
 		
 		public override function update():void 
 		{
-			trace(placing);
 			if (Input.mouseReleased)
 			{
 				if (placing == NOTHING)
@@ -254,6 +253,7 @@ package
 								if (stu)
 								{
 									Grid.occupy(x, y, stu);
+									
 									for each (s in Grid.getSpawn)
 									{
 										if (!(a = s.findpath()))

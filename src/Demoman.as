@@ -20,12 +20,10 @@ package
 			sprite2.add("up",[0]);
 			sprite2.add("down",[1]);
 			sprite2.add("left",[2]);
-			sprite2.add("right",[3]);
-			super(x, y, null);
+			sprite2.add("right", [3]);
+			super(x, y, []);
 			health = 20;
 			speed = 2;
-			this.x = x;
-			this.y = y;
 			graphic = sprite2;
 			type = "enemy";
 			setHitbox(20, 20);
@@ -33,53 +31,59 @@ package
 			FP.world.getClass(Structure, structs);
 			for each (var e : Structure in structs)
 			{
-				if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < disTo) {
+				if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < disTo && (e.GetType()!= Structure.SPAWNPOINT) && (e.GetType()!= Structure.PLANT)) {
 					disTo = (new Point(x, y).subtract(new Point(e.x, e.y))).length;
 					building = e;
 				}
 			}
-			path = Grid.findPath(new Point(Grid.gridX(building.x), Grid.gridY(building.y)), new Point(Grid.gridX(x), Grid.gridY(y)));
+			if (building)
+				path = Grid.findPath(new Point(Grid.gridX(building.x), Grid.gridY(building.y)), new Point(Grid.gridX(x), Grid.gridY(y)));
+			else 
+				path = [];
 			sprite2.play("up");
 		}
 		
 		public override function update() : void
 		{
-
 			if (pathelement < path.length - 1)
 			{
 				var moveX : Number = path[pathelement + 1].x - path[pathelement].x;
 				var moveY : Number = path[pathelement + 1].y - path[pathelement].y;
 				this.x += moveX * speed;
 				this.y += moveY * speed;
+				count += Math.abs(moveX * speed) + Math.abs(moveY * speed);
+
 				if (moveX>0) sprite2.play("right");
 				if (moveX<0) sprite2.play("left");
 				if (moveY<0) sprite2.play("up");
 				if (moveY>0) sprite2.play("down");
-				if ((Grid.gridX(this.x+19) == path[pathelement + 1].x) && (Grid.gridY(this.y+19) == path[pathelement + 1].y))
-				{
+				if (count >= 20) {
 					pathelement++;
+					count = 0;
 				}
 			}else {
-				FP.world.getClass(Structure, building);
+				FP.world.getClass(Structure, structs);
 				
-				for each (var e : Structure in building)
+				for each (var e : Structure in structs)
 				{
-					if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < 60) {
+					if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < 60 && e.GetType() != Structure.SPAWNPOINT && e.GetType() != Structure.PLANT ) {
 						e.remove();		
+						trace("UIHBIUBIBIBNINUIO");
 					}
 				}
-				FP.world.remove(this);
 				Wavemanager.enemyDeath();
+				FP.world.remove(this);
+				return;
 			}
 			speed = 1;
+			
+			layer = -y;
 			
 			if (health < 1)
 			{
 				world.remove(this);
 				Wavemanager.enemyDeath();
 			}
-			layer = -y;
-			
 		}
 		
 	}
