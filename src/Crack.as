@@ -11,7 +11,7 @@ package
 		protected var slickType :String = "Normal";
 
 		
-		[Embed(source = 'assets/slick.png')] private const SLICKPIC: Class;
+		[Embed(source = 'assets/crackbutton.png')] private const CRACK: Class;
 		
 		protected var 	damage :Number, // The damage the slick causes to enemies walking on it
 						slowing : Number, // The number to divide the speed of the unit on walking in the slick
@@ -25,7 +25,7 @@ package
 			super (x, y,sprite);
 			if (!sprite)
 			{
-				graphic= new Image(SLICKPIC);
+				graphic= new Image(CRACK);
 			}
 			strucType = SLICK;
 			damage = 0.01; // The damage the slick causes to enemies walking on it
