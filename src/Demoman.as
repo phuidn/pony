@@ -73,7 +73,6 @@ package
 				for each (var e : Structure in structs)
 				{
 					if ((new Point(x, y).subtract(new Point(e.x, e.y))).length < 30 && e.GetType() != Structure.SPAWNPOINT && e.GetType() != Structure.PLANT ) {
-						trace(e);
 
 						e.remove();
 						i++;

@@ -49,11 +49,10 @@ package
 			var d :Crack = collide("crack", x, y) as Crack;
 			if (d)
 			{
-				trace("UIB");
 				speed = 0.5;
 			}
 
-			if (pathelement < path.length - 1)
+			if (path && pathelement < path.length - 1)
 			{
 				var moveX : Number = path[pathelement + 1].x - path[pathelement].x;
 				var moveY : Number = path[pathelement + 1].y - path[pathelement].y;
