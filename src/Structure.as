@@ -36,7 +36,7 @@ package
 			return strucType;
 		}
 		
-		public function remove ():void 
+		public function remove():void 
 		{
 			Grid.occupy(Grid.gridX(x), Grid.gridY(y), null);
 			FP.world.remove(this);

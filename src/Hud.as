@@ -18,7 +18,7 @@ package
 		private const PLACING : int = 1;
 		private const DELETING : int = 2;
 		
-		[Embed(source = 'assets/grid.png')] private const GRID: Class;
+		[Embed(source = 'assets/background.png')] private const GRID: Class;
 		private var sprite : Image = new Image(GRID);
 		
 		private var placing : int = NOTHING;
@@ -129,7 +129,6 @@ package
 		
 		public override function update():void 
 		{
-			trace(placing);
 			if (Input.mouseReleased)
 			{
 				if (placing == NOTHING)
@@ -142,7 +141,7 @@ package
 					var y:Number = Grid.gridY(world.mouseY);
 					
 					if (!(x == -1 || y == -1))
-					{					
+					{
 						if (!Wavemanager.withInWave())
 						{
 							
@@ -264,6 +263,7 @@ package
 								if (stu)
 								{
 									Grid.occupy(x, y, stu);
+									
 									for each (s in Grid.getSpawn)
 									{
 										if (!(a = s.findpath()))
@@ -280,9 +280,7 @@ package
 					}
 					else
 					{
-						hudDesc.SelectType();
-						placing = NOTHING;	
-						clicked.unclick();						
+						checkButtonPress();						
 					}
 				}
 				else if (placing == DELETING)
@@ -307,9 +305,7 @@ package
 					}
 					else
 					{
-						hudDesc.SelectType();
-						placing = NOTHING;
-						clicked.unclick();
+						checkButtonPress();
 					}
 				}
 			}
